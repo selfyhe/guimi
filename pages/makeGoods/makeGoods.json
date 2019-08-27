@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "ui-popup": "/common/components/popup/popup",
+    "ui-input-number": "/common/components/input-number/input-number"
+  }
+}

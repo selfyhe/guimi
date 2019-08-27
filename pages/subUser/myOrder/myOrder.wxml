@@ -1,0 +1,42 @@
+<!--pages/subUser/myOrder/myOrder.wxml-->
+<view class='container'>
+  <view class='tabs'>
+    <view class="tab-item {{status == index ? 'tab-item-active': ''}}" wx:for="{{orderItems}}" wx:key="{{index}}" data-index='{{index}}'  bindtap='handleItemsClick' >{{item}}</view>
+  </view>
+  <view class='ul'>
+    <view  wx:for="{{orderList}}" class="li mb30 {{item.xianshi?'show':'hide'}}" wx:key="{{index}}" bindtap='handleOrderClick' data-orderid="{{item.GUIMI_ORDER_ID}}" data-storid="{{item.GUIMI_STORE_ID}}" data-status="{{item.STATUS}}" data-payment="{{item.PAYMENT}}" data-discount="{{item.DISCOUNT}}" data-index="{{index}}">
+      <view class='li-hd'>
+        <!-- <view class='li-hd-left'>订单{{orderItems[orderCurrent]}}</view> -->
+        <!-- <view class='li-hd-left'>订单{{orderItems[status]}}</view> -->
+        <view class='li-hd-left'>订单{{item.STATUS == 0?'待付款':(item.STATUS == 1?'待发货':(item.STATUS == 2?'确认收货':(item.STATUS == 3?'待评价':(item.STATUS == 5?'处理中....':(item.STATUS == 6?'退款成功':(item.STATUS == 7?'已完成':'退款状态'))))))}}</view>
+        <!-- <view class='li-hd-date'>{{item.CREATE_DATE}}</view> -->
+        <view class='li-hd-date'>{{item.timestamp}}</view>
+      </view>
+      <view class='dotted'></view>
+      <view class='li-bd'>
+        <view class='good-cell' wx:for="{{item.dingzhi}}" wx:key="{{index}}" wx:for-item="ite" wx:for-index="ind">
+          <view class='good-cell-hd'>{{ite.PRODUCT_NAME}}</view>
+          <view class='good-cell-hd'>x{{ite.NUM}}</view>
+        </view>
+        <view class='color-orange' wx:if="{{item.dingzhi.length>=3}}">查看全部{{item.num}}件商品</view>
+      </view>
+      <view class='li-ft'>
+        <view class='li-ft-actions'>
+          <view class='li-button' wx:if="{{item.STATUS == 0}}">立即付款</view>
+          <view class='li-button_cancel ml20' wx:if="{{item.STATUS == 0}}">取消订单</view>
+          <!-- <view class='li-button' wx:if="{{item.STATUS == 3}}">申请退款</view> -->
+          <view class='li-button' wx:if="{{item.STATUS == 3}}">再来一单</view>
+          <view class='li-button' wx:if="{{item.STATUS == 2}}">确认收货</view>
+          <view class='li-button ml20' wx:if="{{item.STATUS == 3}}">评价</view>
+          <view class='li-button' wx:if="{{item.STATUS == 5}}">处理中....</view>
+          <view class='li-button' wx:if="{{item.STATUS == 6}}">退款成功</view>
+          <view class='li-button' wx:if="{{item.STATUS == 7}}">已完成</view>
+          <view class='li-button' wx:if="{{item.STATUS == 8}}">退款失败</view>
+        </view>
+        <view class='li-ft-price'>实付：<text class='color-F55A32'>￥<text class='font-40'>{{item.PAYMENT}}</text></text></view>
+      </view>
+      <view class='sawtooth'></view>
+    </view>
+  </view>
+  <view style="width:100%;height:auto;text-align:center;line-height:100rpx" wx:if="{{orderList == ''}}">暂时没有数据</view>
+</view>

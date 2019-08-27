@@ -1,0 +1,8 @@
+<!--pages/subIndex/community/community.wxml-->
+<view class="container">
+  <image src="{{baseUrl}}/{{poster.IMG_URL}}" style='width:100%;' mode='widthFix' />
+</view>
+<!-- 底部栏 -->
+<view class='affix-bar'>
+  <view bindtap='handlePreview' class='affix-bar-button'>我要进社群</view>
+</view>

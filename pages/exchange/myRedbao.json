@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "我的红包",
+  "usingComponents": {
+    "ui-dialog":"/common/components/dialog/dialog" 
+  }
+}

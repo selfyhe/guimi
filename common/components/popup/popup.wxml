@@ -1,0 +1,5 @@
+<view class="mask" bindtap='handleHide' wx:if="{{visible && mask}}" catchtouchmove='preventTouchMove'>
+</view>
+<view class='popup-container' wx:if="{{visible}}" catchtouchmove='preventTouchMove'>
+  <slot></slot>
+</view>

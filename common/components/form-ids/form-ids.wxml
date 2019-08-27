@@ -1,0 +1,5 @@
+<form report-submit="{{true}}" bindsubmit='formIdSubmit'>
+  <button form-type="submit" class='button-formid'>
+    <slot/>
+  </button>
+</form>

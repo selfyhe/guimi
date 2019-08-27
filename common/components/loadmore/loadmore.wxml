@@ -1,0 +1,12 @@
+<view class="ui-loadmore">
+  <block wx:if="{{ type === 'loading' }}">
+    <view class="ui-loading"></view>
+    <view class="ui-loadmore__tips">努力加载中...</view>
+  </block>
+  <block wx:elif="{{ type === 'text' }}">
+    <view class="ui-loadmore__line"></view>
+    <text wx:if="{{ text }}" class="ui-loadmore__text">{{ text }}</text>
+    <view wx:else class="ui-loadmore__dot"></view>
+    <view class="ui-loadmore__line"></view>
+  </block>
+</view>

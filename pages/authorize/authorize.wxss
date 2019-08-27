@@ -1,0 +1,45 @@
+/* page/authorize/authorize.wxss */
+page {
+  background-color: #fff;
+}
+.container{
+  text-align: center;
+  width: 600rpx;
+  margin: 30rpx auto;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+}
+.auth-header{
+  padding: 70rpx 0;
+}
+.auth-logo{
+  display: inline-block;
+  width: 176rpx;
+  height: 176rpx;
+  margin-bottom: 20rpx;
+}
+.auth-name{
+  font-size: 40rpx;
+  color: #333;
+}
+.auth-content{
+  padding: 40rpx 0;
+  margin-bottom: 70rpx;
+}
+.auth-title{
+  margin-bottom: 30rpx;
+  font-size: 36rpx;
+  color: #000;
+  font-weight: bold;
+}
+.auth-info{
+  font-size: 33rpx;
+  color: #666;
+}
+.button{
+  width:600rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+}

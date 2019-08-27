@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "ui-dialog": "/common/components/dialog/dialog",
+    "ui-popup": "/common/components/popup/popup"
+  }
+}

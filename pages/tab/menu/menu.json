@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "菜单",
+  "usingComponents": {
+    "ui-popup": "/common/components/popup/popup",
+    "ui-tab-bar": "/common/components/tab-bar/tab-bar",
+    "ui-input-number": "/common/components/input-number/input-number",
+    "form-ids": "/common/components/form-ids/form-ids"
+  }
+}

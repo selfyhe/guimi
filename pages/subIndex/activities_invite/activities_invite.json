@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "ui-popup": "/common/components/popup/popup"
+  }
+}

@@ -1,0 +1,16 @@
+/* pages/subUser/myInvoice.wxss */
+page{
+  background-color:#fff;
+}
+.myinvoice{
+  padding: 0 40rpx;
+  border-top:2rpx solid #f6f6f6;
+}
+.myinvoice-item{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom:2rpx solid #f6f6f6;
+  height: 120rpx;
+}

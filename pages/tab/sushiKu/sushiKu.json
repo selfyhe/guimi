@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "寿司库",
+  "usingComponents": {
+    "ui-tab-bar": "/common/components/tab-bar/tab-bar"
+  }
+}

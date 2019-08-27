@@ -1,0 +1,6 @@
+<!--pages/communityIndex/communityIndex.wxml-->
+<view class="container">
+    <view style="width:{{width}};height:{{height}};background:red">
+      <image src="{{}}"></image>
+    </view>
+</view>

@@ -1,0 +1,45 @@
+<!--pages/subUser/mySetting/mySetting.wxml-->
+<view class='container'>
+  <view class='header ui-hairline--bottom'>
+    <view class='avatar'>
+      <image src="{{userInfo.AVATARURL}}" />
+    </view>
+    <view class='button' bindtap='handleChooseImage'>更换</view>
+  </view>
+  <view class='cell ui-hairline--bottom'>
+    <view class='cell-hd'>
+      <view class='ui-c-gray-darker'>昵称</view>
+    </view>
+    <view class='cell-bd'>
+      <input class='cell-input' placeholder='填写您的昵称' type='text' name="NICKNAME" value='{{userInfo.NICKNAME}}' data-value='userInfo.NICKNAME' bindinput="bindKeyInput" />
+    </view>
+  </view>
+  <view class='cell ui-hairline--bottom'>
+    <view class='cell-hd'>
+      <view class='ui-c-gray-darker'>性别</view>
+    </view>
+    <view class='cell-bd'>
+      <view class='cell-radio' catchtap='radioChange' data-value='1'>
+        <icon class='cell-radio-icon' type="{{userInfo.GENDER == 1 ? 'success' : 'circle'}}" size="20" color="{{userInfo.GENDER == 1?'#4EC487':'#979797'}}" />
+        <text class='cell-radio-txt' class="i-radio-title">男</text>
+      </view>
+      <view class='cell-radio' catchtap='radioChange' data-value='2'>
+        <icon class='cell-radio-icon' type="{{userInfo.GENDER == 2 ? 'success' : 'circle'}}" size="20" color="{{userInfo.GENDER == 2?'#4EC487':'#979797'}}" />
+        <text class='cell-radio-txt' class="i-radio-title">女</text>
+      </view>
+    </view>
+  </view>
+  <view class='cell ui-hairline--bottom'>
+    <view class='cell-hd'>
+      <view class='ui-c-gray-darker'>{{userInfo.MOBILE ? '手机': '未绑定手机'}}</view>
+    </view>
+    <view class='cell-bd' wx:if="{{userInfo.MOBILE}}">
+      <input class='cell-input' disabled type='number' name="MOBILE" value='{{userInfo.MOBILE}}' />
+       <!-- <input class='cell-input' placeholder='填写您的手机' type='number' name="MOBILE" value='{{userInfo.MOBILE}}' data-value='userInfo.MOBILE' bindinput="bindKeyInput" />  -->
+    </view>
+  </view>
+</view>
+<!-- 底部栏 -->
+<view class='affix-bar'>
+  <view class='affix-bar-button' bindtap='handleUserInfoSave'>保存</view>
+</view>

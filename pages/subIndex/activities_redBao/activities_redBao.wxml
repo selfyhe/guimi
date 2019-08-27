@@ -1,0 +1,45 @@
+<!--pages/subIndex/activities_invite/activities_invite.wxml-->
+<view class='container'>
+  <view class='playbill'>
+    <image class='playbill-img' mode='widthFix' src='{{baseUrl}}/{{poster.IMG_URL}}' />
+  </view>
+  <view class='main' style="{{offsetTop ? 'position: absolute;top:'+offsetTop+'px' : ''}}">
+    <view class='receive-box'>
+      <!-- <input class='receive-input' type='number' name="MOBILE" data-value='MOBILE' bindinput="bindKeyInput" placeholder='请输入手机号码' value='{{MOBILE}}' placeholder-style='color:#CDCDCD;' />  -->
+      <!-- <view class="receive-button {{!MOBILE ? 'receive-button--disabled' : ''}}" bindtap='handleRedbaoGet'>
+        免费领取
+      </view> -->
+      <!-- <view class="receive-button {{userInfo.ISNEW == '1' ? '' : 'receive-button--disabled'}}" bindtap='handleRedbaoGet'>
+        {{userInfo.ISNEW == '1' ?'免费领取':'您已领取过'}}
+      </view> -->
+      <view class="receive-button" bindtap='handleRedbaoGet'>
+        {{userInfo.ISNEW == '1' ?'免费领取':'您已领取过新人礼包'}}
+      </view>
+    </view>
+    <view class='cell'>
+      <!-- <view class='cell-title' bindtap='handleNavigator' data-url='/pages/exchange/exchange'>进入首页</view> -->
+      <navigator class='cell-title' url="/pages/tab/menu/menu" open-type="reLaunch">去吃鲑蜜寿司</navigator>
+    </view>
+    <view class='panel-box'>
+      <view class='panel-header'>
+        <view class='panel-header-title'>好友动态</view>
+      </view>
+      <view class='panel-content'>
+        <!-- <image mode='widthFix' src='http://iph.href.lu/600x300?text=海报&bg=d8d8d8' /> -->
+        <image style='box-shadow:0px 3px 5px 0px rgba(174,174,174,0.5);' mode='widthFix' src='{{baseUrl}}/{{adList[0].IMG_URL}}' />
+      </view>
+    </view>
+  </view>
+</view>
+<ui-popup id="popup" visible="{{visible}}">
+  <view class='my-popup'>
+    <view class='my-popup-inner'>
+      <view class='font-32 ui-c-gray-darker ui-font-bold'>恭喜您成功领取</view>
+      <view class='my-popup-h2'>{{worth}}元新人大礼包</view>
+      <view class='font-28 ui-c-gray-dark ui-font-bold'>已存入您的账户</view>
+    </view>
+    <!-- <button open-type='share' class='share-button my-popup-button'>分享给小伙伴一起领</button> -->
+    <view class='my-popup-button2' bindtap='handleNavigator' data-url='/pages/tab/menu/menu'>立即吃一顿</view>
+  </view>
+  <view class='my-popup-close' bindtap='handleMypopupClose'></view>
+</ui-popup>

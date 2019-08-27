@@ -1,0 +1,41 @@
+<view class="mybillheader">
+<form bindsubmit="saveData" report-submit >
+  <view class='mybillheader-item' >
+    <text class='item-text'>发票抬头</text>
+    <input class='item-input' name="billName" placeholder='请输入公司名称（必填）' value="{{invoiceTitle?invoiceTitle.TITLE:''}}"></input>
+  </view>
+  <view class='mybillheader-item' >
+    <text class='item-text' style='font-size:26rpx;'>纳税人识别号</text>
+    <input class='item-input' name="billNUM" placeholder='（必填）' value="{{invoiceTitle?invoiceTitle.TAXPAYER_NUM:''}}"></input>
+  </view>
+  <!-- <view class='mybillheader-item' >
+    <text class='item-text'>电子邮箱</text>
+    <input class='item-input' name="email" placeholder='（必填）' value="{{invoiceTitle?invoiceTitle.EMAIL:''}}"></input>
+  </view> -->
+  <view class='mybillheader-item' >
+    <text class='item-text'>注册地址</text>
+    <input class='item-input'  name="ADDRESS" placeholder='（选填）' value="{{invoiceTitle?invoiceTitle.REGISTERED_ADDRESS:''}}"></input>
+  </view>
+  <view class='mybillheader-item' >
+    <text class='item-text'>注册电话</text>
+    <input class='item-input' name="PHONE" placeholder='（选填）' value="{{invoiceTitle?invoiceTitle.REGISTERED_PHONE:''}}"></input>
+  </view>
+  <view class='mybillheader-item' >
+    <text class='item-text'>开户银行</text>
+    <input class='item-input'  name="BankNUmADD" placeholder='（选填）' value="{{invoiceTitle?invoiceTitle.BANK:''}}"></input>
+  </view>
+  <view class='mybillheader-item' >
+    <text class='item-text'>银行账号</text>
+    <input class='item-input'  name="BankNUm" placeholder='（选填）' value="{{invoiceTitle?invoiceTitle.BANK_CARD_NUM:''}}"></input>
+  </view>
+  <checkbox-group bindchange="Changedefuailt"> 
+    <label class='set-default'>
+      <checkbox value='true' checked="{{invoiceTitle?(invoiceTitle.ISDEFAULT == 1?true:false):''}}"></checkbox>
+      <text class='set-text'>设为默认发票抬头</text> 
+    </label>
+  </checkbox-group>
+  <view class='foot-btn'>
+    <button class='addbillhead-btn' form-type='submit'>保存</button>
+  </view>
+  </form>
+</view>

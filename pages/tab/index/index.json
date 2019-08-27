@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "ui-tab-bar": "/common/components/tab-bar/tab-bar",
+    "ui-popup": "/common/components/popup/popup",
+    "form-ids": "/common/components/form-ids/form-ids"
+  }
+}

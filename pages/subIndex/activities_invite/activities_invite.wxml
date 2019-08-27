@@ -1,0 +1,99 @@
+<!--pages/subIndex/activities_invite/activities_invite.wxml-->
+<view class='container'>
+  <view class='playbill'>
+    <image class='playbill-img' mode='widthFix' src='{{baseUrl}}/{{poster.IMG_URL}}' />
+  </view>
+  <!-- <view class='main' style="{{offsetTop ? 'position: absolute;top:'+offsetTop+'px' : ''}}"> -->
+  <view class='main'>
+    <view class='share-box'>
+      <view class='share-inner'>
+        <view class='share-item'>
+          <button open-type="share" class='share-button'></button>
+          <view class='share-item-media'>
+            <image src='/images/icon_share.png' />
+          </view>
+          <view class='share-item-title'>微信好友</view>
+        </view>
+        <view class="share-item" catchtap='handleButtonShare'>
+          <view class='share-item-media'>
+            <image src='/images/icon_shares.png' />
+          </view>
+          <view class='share-item-title'>保存图片</view>
+        </view>
+      </view>
+    </view>
+    <view class='count-down'>
+      <view class='count-down-left'>距离本期结束还有:</view> 
+      <view class='count-down-right'>{{countdown}}</view>
+    </view>
+    <view class='panel-box mb20'>
+      <view class='panel-header'>
+        <view class='panel-header-title'>本周排行榜</view>
+      </view>
+      <view class='panel-content'>
+        <block wx:if="{{rankList.length}}">
+          <view class='li' wx:for="{{rankList}}" wx:key="{{item.BE_INVITED_ID}}">
+            <view class='li-media'>
+              <!-- <image src='{{baseUrl}}/{{item.AVATARURL}}' /> -->
+              <image src='{{item.AVATARURL}}' />
+            </view>
+            <view class='li-inner'>
+              <view class='li-title ui-ellipsis'>{{item.NICKNAME}}</view>
+              <view class='li-txt'>{{parse.formatTime(item.CREATE_DATE)}}</view>
+            </view>
+          </view>
+        </block>
+        <block wx:else>
+          <view class='' style='padding-bottom:90rpx;color:#666;font-size:28rpx;text-align:center;'>还没有数据，快去分享吧</view>
+        </block>
+      </view>
+    </view>
+    <view class='panel-box mb20'>
+      <view class='panel-header'>
+        <view class='panel-header-title'>已获赠券</view>
+      </view>
+      <view class='panel-content'>
+        <block wx:if="{{list.length}}">
+          <view class='ui-center ui-c-gray-dark font-28'>已成功邀请<text class='color-red'>{{list.length}}</text>名小伙伴，共获得<text class='color-red'>{{list.length}}</text>张赠券</view>
+          <view class='li' wx:for="{{list}}" wx:key="{{item.BE_INVITED_ID}}">
+            <view class='li-media'>
+              <!-- <image src='{{baseUrl}}/{{item.AVATARURL}}' /> -->
+              <image src='{{item.AVATARURL}}' />
+            </view>
+            <view class='li-inner'>
+              <view class='li-title ui-ellipsis'>{{item.NICKNAME}}</view>
+              <view class='li-txt'>{{parse.formatTime(item.CREATE_DATE)}}</view>
+            </view>
+          </view>
+        </block>
+        <block wx:else>
+          <view class='' style='padding-bottom:90rpx;color:#666;font-size:28rpx;text-align:center;'>还没有获得奖励，快送好友吃寿司大餐</view>
+        </block>
+      </view>
+    </view>
+    <view class='panel-box'>
+      <view class='panel-header'>
+        <view class='panel-header-title'>活动细则</view>
+      </view>
+      <view class='panel-content'>
+        <text class='rules'>{{REMARK}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+<ui-popup id="popup" visible="{{popupShow}}">
+  <view class='popup-box'>
+    <view class='popup-media'>
+      <image src='{{playbillPath}}' style='width:{{canvasWidth * winScale}}px;height:{{canvasHeight* winScale}}px;' />
+    </view>
+    <view class='btn-save' bindtap='handlePosterSave'>保存后可分享</view>
+  </view>
+</ui-popup>
+<canvas class='canvas-content' canvas-id='playbill' style='width:{{canvasWidth}}px;height:{{canvasHeight}}px;'></canvas>
+<wxs module="parse">
+  module.exports = {
+    formatTime: function(value) {
+      return value.slice(0, 16)
+    }
+  }
+</wxs>

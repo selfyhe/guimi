@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "领取",
+  "usingComponents": {
+    "ui-dialog": "/common/components/dialog/dialog",
+    "ui-popup": "/common/components/popupin/popupin"
+  }
+}

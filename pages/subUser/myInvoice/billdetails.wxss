@@ -1,0 +1,79 @@
+/* pages/subUser/myInvoice.wxss */
+page{
+  background-color:#fff;
+  position: relative;
+  height: 100%;
+}
+.billdetails{
+  padding: 0 40rpx 116rpx;
+  border-top:2rpx solid #f6f6f6;
+}
+.mybillheader-item{
+  border-bottom:2rpx solid #f6f6f6;
+  color:#666;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+.item-text{padding: 40rpx 0;width: 212rpx;}
+.item-details{
+  padding-top: 40rpx;
+  padding-bottom: 40rpx;
+  padding-left: 20rpx;
+  width: 100%;
+  color:#333;
+}
+.foot-btn{
+  background-color:#fff;
+  position: absolute;
+  bottom: 0;
+  left:0;
+  padding: 0 40rpx 32rpx;
+}
+.addbillhead-btn{
+  color:#fff;
+  font-size: 32rpx;
+  background-color:#A2D085;
+  border-radius: 0 0 16rpx 16rpx;
+  text-align: center;
+  /* padding:20rpx 0; */
+  width: 670rpx;
+}
+.set-default{
+  margin-top: 30rpx;
+  display: block;
+}
+.set-text{
+  color:#B58E43;
+  font-size: 26rpx;
+}
+.radio{
+  width: 200rpx;
+  display: inline-block;
+  margin-right: 40rpx;
+}
+
+/* 选择发票抬头的公司 */
+.container_Invoice{
+  width:100%;
+  height:40rpx;
+  display:flex;
+  padding:40rpx 0;
+  border-bottom:2rpx solid #f6f6f6;
+}
+.invoic-details{
+  padding-left: 51rpx;
+  width: 100%;
+  /* color:#999; */
+}
+.invoic-details_text{
+   padding-left: 51rpx;
+   width: 100%;
+   color:#333;
+}
+.invocie_box{
+  width:80%;
+  display:flex;
+  justify-content:space-between;
+}

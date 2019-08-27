@@ -1,0 +1,125 @@
+<!--pages/subIndex/customized/customized.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset" style="z-index:99;">
+<view class="container">
+    <view class="containre_content">
+        <image src="{{baseUrl}}/{{imgUrl}}"></image>
+    </view>
+    <view class="content">
+        <view class="content_box">
+            <view class="content_text">
+                用餐地址
+            </view> 
+            <view class="content_icon">
+                  <picker bindchange="addressChange" value="{{xiabiao}}" range="{{address}}" style="float:right;width:auto;height:auto;margin-left:auto;">
+                   <view class="picker_content">
+                        <view class="content_tips">
+                           {{address[xiabiao]?address[xiabiao]:'请选择'}}
+                        </view> 
+                        <ui-icon type="enter" color='#999' size='22' />
+                   </view> 
+                  </picker>
+            </view> 
+        </view>
+         <view class="content_box">
+            <view class="content_text">
+                场景需求
+            </view> 
+            <view class="content_icon">
+                   
+                <picker wx:if="{{addresss}}" bindchange="bindPickerChange" value="{{index}}" range="{{array}}" style="float:right;width:auto;height:auto;margin-left:auto;">
+                   <view class="picker_content">
+                        <view class="content_tips">
+                           {{array[index]?array[index]:'请选择'}}
+                        </view> 
+                        <ui-icon type="enter" color='#999' size='22' />
+                   </view> 
+                  </picker>
+                  <view wx:else style="float:right;width:auto;height:auto;margin-left:auto;"  bindtap="pinckerChange">
+                    <view class="picker_content"  >
+                          <view class="content_tips">
+                            请选择
+                          </view> 
+                          <ui-icon type="enter" color='#999' size='22' />
+                    </view>
+                  </view>
+                 
+                   
+            </view> 
+        </view>
+
+         <view class="content_box">
+            <view class="content_text">
+                费用预算
+            </view> 
+            <view class="content_icon">
+                   <picker wx:if="{{scene}}" bindchange="Change" value="{{ind}}" range="{{multiArray}}" style="float:right;width:auto;height:auto;margin-left:auto;">
+                    <view class="picker_content">
+                          <view class="content_tips">
+                            {{multiArray[ind]?multiArray[ind]:'请选择'}}
+                            <!-- {{duoshe?'请选择':(duoshe?'请选择':multiArray[ind])}} -->
+                          </view> 
+                          <ui-icon type="enter" color='#999' size='22' />
+                    </view> 
+                  </picker>
+                  <view wx:else style="float:right;width:auto;height:auto;margin-left:auto;"  bindtap="feiyongChange">
+                    <view class="picker_content"  >
+                          <view class="content_tips">
+                            请选择
+                          </view> 
+                          <ui-icon type="enter" color='#999' size='22' />
+                    </view>
+                  </view>
+            </view> 
+        </view>
+
+         <view class="content_box">
+            <view class="content_text">
+                用餐时间
+            </view> 
+           <view class="content_icon">
+                 <!-- <picker mode="multiSelector"  value="{{dateTime1}}" bindchange="changeDateTime1" range="{{dateTimeArray1}}" style="float:right;width:auto;height:auto;margin-left:auto;">
+                <view class="picker_content">
+                      <view class="content_tips">
+                        {{timer?timer:'请选择'}}
+                      </view> 
+                      <ui-icon type="enter" color='#999' size='22' />
+                </view>
+                </picker> -->
+                 <!-- start="2015-09-01" end="2017-09-01"  -->
+                <picker mode="date" value="{{date}}"bindchange="bindDateChange" style="float:right;width:auto;height:auto;margin-left:auto;">
+                    <view class="picker_content">
+                      <view class="content_tips">
+                        {{date?date:'请选择'}}
+                      </view> 
+                      <ui-icon type="enter" color='#999' size='22' />
+                    </view>
+                </picker>
+            </view> 
+          </view>
+
+         <view class="content_box">
+            <view class="content_text">
+                联系电话
+            </view> 
+            <view class="content_tips" style="padding-right:48rpx" bindtap="fillIn" wx:if="{{toggle}}">
+                 请填写
+            </view>
+            <view class="content_input" wx:if="{{!toggle}}">
+                <input auto-focus='true' name="phone"></input>
+            </view>
+        </view>
+        <view class="content_box">
+            <view class="content_text">
+                微信号
+            </view> 
+            <view class="content_tips" style="padding-right:48rpx" bindtap="fillInWX" wx:if="{{toggleWx}}">
+                请填写
+            </view> 
+            <view class="content_input" wx:if="{{!toggleWx}}">
+                <input auto-focus='true' name="wechat"></input>
+            </view>
+        </view>
+    </view>
+</view>
+<button class="container_button"  form-type="submit" >提交</button>
+</form>

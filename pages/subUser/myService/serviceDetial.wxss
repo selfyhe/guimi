@@ -1,0 +1,27 @@
+/* pages/serviceDetial/serviceDetial.wxss */
+page{
+  background-color:white;
+}
+.container{
+  width:100%;
+  height:auto;
+}
+.container_content{
+  width:88%;
+  height:auto;
+  margin:0 auto;
+  padding-top:62rpx;
+}
+.container_title{
+  width:100%;
+  height:auto;
+  font-size:32rpx;
+  color:#262626;
+  font-weight:700;
+}
+.container_text{
+  color:#535353;
+  font-size:28rpx;
+  text-align:justify;
+  padding-top:40rpx;
+}

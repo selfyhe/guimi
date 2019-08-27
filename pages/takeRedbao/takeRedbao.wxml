@@ -1,0 +1,110 @@
+<!--pages/subIndex/activities_invite/activities_invite.wxml-->
+<view class='container'>
+  <view class='playbill'>
+   <image class='playbill-img' mode='widthFix' src='{{baseUrl}}/{{imgURL}}' />
+  </view>
+  <view class='main' style="{{offsetTop ? 'position: absolute;top:'+offsetTop+'px' : ''}}">
+    <view class='receive-box'> 
+        <!-- <input class='receive-input' type='number' name="MOBILE" data-value='MOBILE' bindinput="bindKeyInput" placeholder='请输入手机号码' value='{{MOBILE}}' placeholder-style='color:#CDCDCD;' />  -->
+      <!-- <view class="receive-button {{!MOBILE ? 'receive-button--disabled' : ''}}" bindtap='handleRedbaoGet'>
+        免费领取
+      </view> -->
+       <view class="redpake" wx:if="{{redList}}">
+        <view wx:if="{{redList.TYPE == 0}}">
+           <view class="redpake_success">恭喜您成功领取</view>
+          <view class="redpake_tips">{{redList.WORTH}}元无门槛劵</view>
+          <!-- <view class="redpake_use">已存入您的卡券</view> -->
+          <view class="redpake_use"  bindtap='immediately'>立即来一单</view>
+        </view>
+        <view wx:if="{{redList.TYPE == 1}}">
+          <view class="redpake_success">恭喜您成功领取</view>
+          <view class="redpake_tips">新人礼包</view>
+           <!-- <view class="redpake_use">已存入您的卡券</view> -->
+          <view class="redpake_use" bindtap='immediately'>立即来一单</view>
+        </view>
+      </view>
+      <view wx:else class="receive-button {{redbaodState.ISNEW == false ? 'receive-button--disabled' : ''}}" bindtap='handleRedbaoGet'>
+        {{redbaodState.robedFlag == false ?'试试手气':(redbaodState.remainingNum ==0?'红包已被抢完':'您已抢过此红包')}}
+      </view>
+     
+    </view>
+    <!-- <view class='cell'> 
+      <<view class='cell-title' bindtap='handleNavigator' data-url='/pages/exchange/exchange'>进入首页</view>
+     <navigator class='cell-title' url="/pages/tab/index/index" open-type="reLaunch">进入首页</navigator>
+    </view> -->
+    <view class='panel-box'>
+      <view class='panel-header'>
+        <view class='panel-header-title'>看看大家的手气</view>
+      </view>
+      <view class='panel-content'>
+        <!-- redbaodState  listredbao.length-->
+        <view wx:if="{{redbaodState.list == 0}}" class="panpel_item_text">
+            so luckin！竟然没有人发现它，抢先一步
+        </view>
+       
+        <view class="panel_item" wx:if="{{redbaodState.list!= 0}}"  wx:for="{{redbaodState.list}}" wx:key="index">
+            <view class="panel_totaos">
+                <image src="{{item.AVATARURL}}" style="width:100%;height:100%;border-radius:50%"></image>
+            </view>
+            <view class="panel_nikname">
+                <view class="money">{{item.NICKNAME}}</view>
+                <view class="linqutime">{{item.CREATE_DATE}}</view>
+            </view>
+            <view class="panel_type" wx:if="{{item.TYPE == 0}}">{{item.WORTH}}元无门槛券</view>
+            <!-- {{item.WORTH}}元 -->
+            <view class="panel_type" wx:if="{{item.TYPE == 1}}">新人礼包</view>
+        </view>
+      
+      </view>
+    </view>
+    <!-- 展示图片 -->
+    <view class="panel_img">
+        <image src="{{baseUrl}}/{{imgURLxiadan}}" style="width:100%;height:100%;"></image>
+    </view>
+    
+     <view class='panel-box'>
+      <view class='panel-header'>
+      <view class='panel-header-title'>活动规则</view>
+       
+      </view>
+      <view class='panel-content'>
+          <view class="panel_rule"  wx:for="{{ruleIndex}}" wx:key="{{index}}">
+              <view class="panel_rule_num">{{item.index}}</view>
+              <view class="panel_rule_box">{{item.item}}</view>
+          </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!--  -->
+<!-- 弹出层  -->
+<ui-popup id="popup" visible="{{popupShow}}">
+    <view class='redBao-box' style="background:white;z-index:999;border-radius:30rpx;padding:40rpx">
+          <view class="gongxi">恭喜您成功领取</view>
+          <view wx:if="{{redList.TYPE == 0}}" class="xinren">{{redList.WORTH}}元无门槛劵</view>
+          <!-- {{redList.WORTH}}元 -->
+          <view wx:if="{{redList.TYPE == 1}}" class="xinren">新人礼包</view>
+
+          <view class="kajuan">已存入您的卡券</view>
+
+          <button class="sharebutton" open-type="share" title="分享给好友领取红包" hover-class="none">
+                <view class="shareclass" >分享给小伙伴一起领取 </view>
+          </button>
+              
+          <view class="goEat" bindtap='immediately' >去吃一顿</view>
+          <view class="goEat_line"></view>
+    </view>
+    <view bindtap='handleRedbaoClose' class="hiddens">
+      <ui-icon type="close" size='20' color='#999' />
+    </view>
+</ui-popup>
+
+
+
+
+<ui-dialog title="提示" visible="{{ visible }}" bind:ok="handleOk" showCancel="{{false}}" bind:cancel="handleDialogClose" okText='进入首页'>
+  <view class='dialog-info'>
+    <view class='ui-c-gray-darker'>福利领取成功</view> 
+  </view>
+</ui-dialog>
+

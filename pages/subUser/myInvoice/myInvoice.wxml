@@ -1,0 +1,26 @@
+<view class="myinvoice">
+  <navigator class='myinvoice-item' url="/pages/subUser/myInvoice/myrecord?type=0" hover-class="navigator-hover">
+    <view class='cell-bd'>
+      <view class='cell-p'>开具发票</view>
+    </view>
+    <view class='cell-ft'>
+      <ui-icon type="enter" color='#999' size='24' /> 
+    </view>
+  </navigator>
+  <navigator class='myinvoice-item' url="/pages/subUser/myInvoice/myrecord?type=1" hover-class="navigator-hover">
+    <view class='cell-bd'>
+      <view class='cell-p'>开票记录</view>
+    </view>
+    <view class='cell-ft'>
+      <ui-icon type="enter" color='#999' size='24' /> 
+    </view>
+  </navigator>
+  <navigator class='myinvoice-item' url="/pages/subUser/myInvoice/mybillheader" hover-class="navigator-hover">
+    <view class='cell-bd'>
+      <view class='cell-p'>发票抬头</view>
+    </view>
+    <view class='cell-ft'>
+      <ui-icon type="enter" color='#999' size='24' /> 
+    </view>
+  </navigator>
+</view>

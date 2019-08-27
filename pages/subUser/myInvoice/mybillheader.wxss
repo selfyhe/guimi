@@ -1,0 +1,56 @@
+/* pages/subUser/myInvoice.wxss */
+page{
+  background-color:#fff;
+  position: relative;
+  height: 100%;
+}
+.mybillheader{
+  padding: 0 40rpx 116rpx;
+  border-top:2rpx solid #f6f6f6;
+}
+.mybillheader-item{
+  border-bottom:2rpx solid #f6f6f6;
+  color:#666;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 40rpx 0;
+}
+.item-active-sup{
+  color:#fff;
+  background-color:#A2D085;
+  border-radius:6rpx;
+  width: 72rpx;
+  height: 32rpx;
+  margin-left: 14rpx;
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 32rpx;
+}
+.foot-btn{
+  background-color:#fff;
+  position: absolute;
+  bottom: 0;
+  left:0;
+  width: 100%;
+  padding: 0 40rpx 32rpx;
+}
+.addbillhead-btn{
+  color:#fff;
+  font-size: 32rpx;
+  background-color:#A2D085;
+  border-radius: 0 0 16rpx 16rpx;
+  text-align: center;
+  padding: 20rpx 0;
+  width: 670rpx;
+}
+.mybillheader-icon{
+  width:40rpx;
+  height:40rpx;
+  margin-left:auto;
+}
+.detail-icon{
+  width:40rpx;
+  height:40rpx;
+  margin-left:20rpx;
+}

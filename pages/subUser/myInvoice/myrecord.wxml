@@ -1,0 +1,20 @@
+<!--pages/subUser/myInvoice/myrecord.wxml-->
+<view class='myrecord'>
+<!--  class="navigator-hover" -->
+  <!-- <view data-url="/pages/subUser/myInvoice/billdetails"> -->
+    <view class='myrecord-item' wx:for="{{invoiceList}}" wx:key="{{index}}" bindtap='billDetails' data-invoiceid="{{item.GUIMI_INVOICE_ID}}" data-price="{{item.AMOUNT}}">
+      <view>
+        <view class='item-bill'>开票金额：￥{{item.AMOUNT}}</view>
+        <view class='item-text'>
+          <view class='order-num'>订单号码：{{item.FLOW_NUM}}</view>
+          <view class='item-time'>下单时间：{{item.ORDER_DATE}}</view>
+        </view>
+      </view>
+      <view class='cell-ft'>
+        <ui-icon type="enter" color='#999' size='24' />
+      </view>
+    </view>
+  <!-- </view> -->
+  <view wx:if="{{invoiceList == '' && type==1}}" style="width:100%;height:atuo;line-height:200rpx;text-align:center">您暂无开票记录</view>
+  <view wx:if="{{invoiceList == '' && type==0}}" style="width:100%;height:atuo;line-height:200rpx;text-align:center">您暂无开具发票内容</view>
+</view>

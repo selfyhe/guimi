@@ -1,0 +1,14 @@
+/* formId埋点button样式重置 */
+.button-formid{
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+  line-height: inherit;
+  border-radius: 0;
+  background: inherit!important;
+  text-align: inherit;
+}
+.button-formid.button-hover{
+  background:transparent!important;
+}

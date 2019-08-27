@@ -1,0 +1,34 @@
+/* pages/subUser/myAddress/addressEdit.wxss */
+@import "./myAddress.wxss";
+.cell{
+  box-sizing: border-box;
+  font-size: 32rpx;
+  margin: 0 40rpx;
+  padding: 36rpx 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.cell-hd{
+  color: #666;
+  margin-right:60rpx;
+  width: 100rpx;
+  text-align: left;
+}
+.cell-bd{
+  color: #333;
+  flex: 1;
+}
+.cell-input{
+
+}
+.cell-radio{
+  margin-right: 80rpx;
+  display: inline-flex;
+  align-items: center;
+  color: #333;
+  font-size: 32rpx;
+}
+.cell-radio>icon{
+  margin-right: 20rpx;
+}

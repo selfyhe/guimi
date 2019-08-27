@@ -1,0 +1,56 @@
+<!--pages/tab/sushiKu/sushiKu.wxml-->
+<view class='container'>
+  <view class='slide-box'>
+    <swiper class='slide-container' indicator-dots="{{false}}" autoplay="{{false}}" interval="5000" duration="500">
+     <block wx:for="{{imgUrls}}" wx:key="{{item.GUIMI_BANNER_ID}}">
+        <swiper-item>
+          <!-- <image src="{{baseUrl}}/{{item.IMG_URL}}" class="slide-image" catchtap='handleNavigator' data-url='{{item.JUMP_TO_ID}}'/> -->
+          <image src="{{baseUrl}}/{{item.IMG_URL}}" class="slide-image" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class='head'>
+    <view class='head-item' bindtap='handleNavigator' data-url='/pages/exchange/exchange'>
+      <view class='head-item-title'>红包兑换</view>
+      <view class='head-item-txt'>{{userCoupons.length}}个红包</view>
+      <image class='head-item-icon' mode='widthFix' src='/images/sushiKu_img_1.png'/>
+    </view>
+    <view class='head-item' bindtap='handleNavigator' data-url='/pages/subUser/myIntegral/myIntegral'>
+      <view class='head-item-title'>积分兑换</view>
+      <view class='head-item-txt'>0积分</view>
+      <image class='head-item-icon' mode='widthFix' src='/images/sushiKu_img_2.png'/>
+    </view>
+  </view>
+  <view class='notice-box'>
+    <view class='icon-moment'>
+      <image class='icon-time' src='/images/icon_time.png' />
+    </view>
+    <view class='notice-title'>限时专享</view>
+  </view>
+  <view class='noticeSub'>请在有效期内购买兑换产品</view>
+  <view class='list mb20'>
+    <view class='list-item ui-hairline--bottom' wx:for="{{list}}" wx:key="{{item.GUIMI_PRODUCT_ID}}">
+      <view class='list-item-media'>
+        <image src='{{baseUrl}}/{{item.IMG_URL}}'></image>
+      </view>
+      <view class='list-item-inner'>
+        <view class='list-item-top'>
+          <view class='list-item-title'>
+            {{item.PRODUCT_NAME}}
+            <!-- <text class='pull-right'>1</text> -->
+          </view>
+          <view class='list-item-txt'>
+            {{item.SPEC_NAME}}
+          </view>
+        </view>
+        <view class='list-item-bottom'>
+          <view class='list-item-price'>￥{{item.PRICE}}</view>
+          <view class='list-item-counter'>
+            <view class='list-item-counter--round' data-index='{{index}}' catchtap='handleGoodsAdd'><ui-icon type="add" size='18' color='#fff' /></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

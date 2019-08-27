@@ -1,0 +1,26 @@
+<!--pages/exchange/myRedbao.wxml-->
+<view class='container'>
+  <block wx:if="{{list.length}}">
+    <view class="card" wx:for="{{list}}" wx:key="{{item.GUIMI_COUPON_ID}}" bind:tap='handleCardClick' data-index='{{index}}'> 
+      <view class='card-hd'>
+        <view class='card-price'>
+          <text class='font-24'>￥</text>{{item.WORTH}}</view>
+        <view class='card-toprice'>满{{item.REACH_PRICE}}元可用</view>
+      </view>
+      <view class='card-bd'>
+        <view class='card-title'>仅用于寿司类商品</view>
+        <view class='card-txt'>有限期：{{item.CREATE_DATE}}至{{item.EXPRIE_DATE}}</view>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <ui-load-more tip="暂无可用红包" loading="{{ false }}" />
+  </block>
+</view>
+<!--  -->
+<ui-dialog title="" visible="{{ visible }}" bind:ok="handleOk" bind:cancel="handleDialogClose" okText='马上去' cancelText='继续兑换'>
+  <view class='dialog-info'>
+    <view> 商品兑换成功</view>
+    <view>请返回寿司库把商品加入购物车</view>
+  </view>
+</ui-dialog>

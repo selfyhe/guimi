@@ -1,0 +1,73 @@
+<!--pages/subUser/myInvoice/billdetails.wxml-->
+<form bindsubmit="formSubmit">
+<view class="billdetails">
+  <view class='mybillheader-item' >
+    <text class='item-text'>发票类型</text>
+    <text class='item-details'>电子发票</text>
+  </view>
+  <view class='mybillheader-item' >
+    <text class='item-text'>发票金额</text>
+    <text class='item-details'>￥{{invoice?invoice.AMOUNT:invoiceMoney}}</text>
+  </view>
+  <view class='mybillheader-item' >
+    <text class='item-text'>开票方式</text>
+    <view class='item-details'>
+      <radio-group class="radio-group" bindchange="ModeChange">
+        <label class="radio"  wx:for="{{openMode}}" wx:key="{{item.name}}">
+          <radio value="{{item.name}}" disabled="{{item.disabled}}" checked="{{item.checked}}" />
+          {{item.value}}
+        </label>
+      </radio-group>
+    </view>
+  </view>
+  <view class='mybillheader-item' >
+    <text class='item-text'>发票主体</text>
+    <view class='item-details'>
+      <radio-group class="radio-group" bindchange="TypeChange">
+        <label class="radio"  wx:for="{{openType}}" wx:key="{{item.name}}">
+          <radio value="{{item.name}}"  disabled="{{item.disabled}}" checked="{{item.checked}}" />
+          {{item.value}}
+        </label>
+      </radio-group>
+    </view>
+  </view>
+  <view class="container_Invoice" wx:if="{{zhuti}}">
+      <view style="color:#666;">发票抬头</view>
+      <view class="invocie_box" wx:if="{{invoice}}">
+           <view class="invoic-details_text">{{invoice.TITLE}}</view>
+            <view class='cell-ft'>
+              <ui-icon type="enter" color='#999' size='24' /> 
+            </view>
+      </view> 
+      <view class="invocie_box"  wx:else>
+            <picker wx:if="{{company}}" bindchange="bindPickerChange" value="{{arrayindex}}" range="{{array}}" style="width:90%;height:100%;color:#999">
+             
+                <input class='invoic-details' placeholder='请选择发票抬头' name="companyname" disabled value="{{array[arrayindex]?array[arrayindex]:name}}"></input>
+            </picker>
+
+             <input class='invoic-details' wx:else bindtap="changgeInvoice" placeholder='请选择发票抬头' disabled value=""></input>
+
+            <view class='cell-ft'>
+              <ui-icon type="enter" color='#999' size='24' /> 
+            </view>
+      </view>
+  </view>
+  <view wx:else class="container_Invoice">
+       <view style="color:#666;">开票姓名</view>
+      <view class="invocie_box">
+          <input class='invoic-details' placeholder='请填写个人姓名' name="Invoicename" value="{{invoice.TAXPAYER_NUM?invoice.TAXPAYER_NUM:''}}" disabled="{{invoice.TAXPAYER_NUM?true:false}}"></input>
+      </view> 
+  </view>
+  <view class='mybillheader-item'>
+    <text class='item-text'>邮箱地址</text>
+    <input class='item-details' placeholder='请输入邮箱地址' name="email" value="{{invoice?invoice.EMAIL:''}}" disabled="{{invoice?true:false}}"></input>
+  </view>
+  <view style='margin-top:40rpx;color:#999'>
+    温馨提示：
+    <view style='margin-top:10rpx;'>应国家税务总局要求 ，您若开具增值税普通发票，须同时提供企业抬头及纳税人识别号，否则发票将无法用于企业报销</view>
+  </view>
+  <view class='foot-btn' wx:if="{{typeVoice == 0}}"> 
+     <button  class='addbillhead-btn' form-type="submit">保存</button>
+  </view>
+</view>
+</form>

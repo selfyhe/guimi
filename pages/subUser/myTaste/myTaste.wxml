@@ -1,0 +1,9 @@
+<!--pages/subUser/myTaste/myTaste.wxml-->
+<view class='container'>
+  <textarea class='textarea' placeholder='请输入备注,最多100字' name="REMARKS" value="{{REMARKS}}" data-value='REMARKS' bindinput="bindKeyInput" />
+</view>
+
+<!-- 底部栏 -->
+<view class='affix-bar'> 
+  <view class='affix-bar-button' bindtap='handleTasteSave'>保存</view>
+</view>

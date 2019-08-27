@@ -1,0 +1,31 @@
+/* pages/subIndex/community/community.wxss */
+.button-preview{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+  background: #A2D085;
+  font-size:32rpx;
+  color:#fff;
+}
+/*  */
+.affix-bar{
+  box-sizing: border-box;
+  width: 100%;
+  padding: 30rpx 40rpx; 
+  position: fixed;
+  left: 0;
+  bottom: 0;   
+} 
+.affix-bar-button{ 
+  font-size: 32rpx;
+  color: #fff;
+  background: #A2D085;
+  padding: 22rpx 0;
+  text-align: center;
+  line-height: 1.4;
+  border-radius: 0 0 20rpx 20rpx;
+}

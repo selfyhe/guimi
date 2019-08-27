@@ -1,0 +1,107 @@
+<!--pages/makeGoods.wxml-->
+<view class='container pd110'>
+  <block wx:if="{{goodsList.length}}">
+    <view class='list mb20' id='' wx:for="{{goodsList}}" wx:key="{{item.GUIMI_PRODUCT_TYPE_ID}}">
+      <view class='list-item ui-hairline--bottom' wx:for="{{item.productAllData}}" wx:for-index="idx" wx:for-item="itm" wx:key="{{itm.GUIMI_PRODUCT_ID}}">
+        <view class='list-item-media' catchtap="handleGoodClick" data-src="{{itm.PRODUCT_IMG}}">
+          <image src="{{baseUrl}}/{{itm.IMG_URL}}" />
+        </view>
+        <view class='list-item-inner'>
+          <view class='list-item-top'>
+            <view class='list-item-title'>
+              {{itm.PRODUCT_NAME}}
+            </view>
+            <view class='list-item-txt'>
+              {{itm.PRODUCT_explain}}
+              <!--规格:
+              <block wx:for="{{itm.productguigeData}}" wx:key="{{curretnItm.GUIMI_PRODUCT_SPEC_ID}}" wx:for-index="current" wx:for-item="curretnItm">{{curretnItm.SPEC_NAME}}
+                <block wx:if="{{current < itm.productguigeData.length-1}}">/</block>
+              </block> -->
+            </view>
+          </view>
+          <view class='list-item-bottom'>
+            <view class='font-28 ui-c-gray-darker ui-text-deleted' style='position:absolute;top:-40rpx;left:0;' wx:if="{{itm.Product_youprice}}">￥{{itm.Product_youprice}}</view>
+            <view class='list-item-price'>￥{{itm.productguigeData[0].PRICE}}</view>
+            <view class='list-item-counter'>
+              <block wx:if="{{store.GUIMI_STORE_ID}}">
+                <block wx:if="{{itm.NUM > 0}}">
+                  <view wx:if="{{store.areaDetail.TYPE == 2 || itm.PRODUCT_TYPE == store.areaDetail.TYPE}}" class='list-item-counter--round' catchtap='handleGoodPopup' data-index='{{index}}' data-idx='{{idx}}'>
+                    <ui-icon type="add" size='18' color='#fff' />
+                  </view>
+                  <view wx:else class='font-24 ui-c-gray-dark'>区域即将开通</view>
+                </block>
+                <block wx:else>
+                  <view class='font-24 ui-c-gray-dark'>售罄</view>
+                </block>
+              </block>
+              <block wx:else>
+                <view class='font-24 ui-c-gray-dark'>无门店</view>
+              </block>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view style="margin:300rpx auto;">
+      <ui-load-more tip="暂无可凑单商品" loading="{{ false }}" />
+    </view>
+  </block>
+</view>
+<!-- 结算栏 -->
+<view class='affix-bar' wx:if="{{goodsList.length}}">
+  <view class='affix-bar-hd'>
+    <view class='affix-bar-hd-left'>
+      <!-- <view class=''>应付合计
+        <text class='ml10' style='font-size:40rpx;'>￥{{totalPrice}}</text>
+      </view> -->
+      <view class='' style='font-size:24rpx;'>还差￥{{deliveryMoneydiff}}免运费</view>
+    </view>
+  </view>
+  <navigator class='btn-settlement' open-type='navigateBack'>去购物车</navigator>
+  <!-- <view class='affix-bar-message' hidden='{{!deliveryMoneydiff}}'>配送费￥{{deliveryMoney}},还差{{deliveryMoneydiff}}元免运费</view> -->
+</view>
+<!-- 弹出层 -->
+<ui-popup id="popup" visible="{{popupShow}}">
+  <view class='popup-box'>
+    <view class='good-item'>
+      <view class='good-item-media'>
+        <image src='{{baseUrl}}/{{currentGoodsInfo.IMG_URL}}'></image>
+      </view>
+      <view class='good-item-inner'>
+        <view class='good-item-top'>
+          <view class='good-item-title'>
+            {{currentGoodsInfo.PRODUCT_NAME}}
+          </view>
+          <!-- <view class='good-item-txt'>
+            寿司说明
+          </view> -->
+        </view>
+        <view class='good-item-bottom'>
+          <view class='good-item-price'>￥{{currentGoodsInfo.productguigeData[guideCurrent].PRICE}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='sizes-box'>
+      <view class='sizes-box-head'>规格</view>
+      <view class='sizes-box-content'>
+        <view class="sizes-box-item {{guideCurrent == index ? 'sizes-box-item-active' : ''}}" wx:for="{{currentGoodsInfo.productguigeData}}" wx:key="{{item.GUIMI_PRODUCT_SPEC_ID}}" catchtap='handleGuideChecked' data-index='{{index}}'>{{item.SPEC_NAME}}</view>
+      </view>
+      <view class='sizes-box-head'>数量</view>
+      <view class='sizes-box-content mb20'>
+        <ui-input-number value="{{ currentGoodsNumer }}" min="1" max="100" bindchange="handleNumberChange" data-index="{{index}}" />
+      </view>
+    </view>
+    <view class='btn-addGood' bindtap='handleShopCarAdd'>加入购物车</view>
+  </view>
+</ui-popup>
+<!--  -->
+<ui-popup id="popup2" visible="{{popupShow2}}">
+  <view class='goodImgs'>
+    <view class='btn-close' catchtap='handleIMgClose'>关闭</view>
+    <scroll-view class='goodImgs-scrollView' scroll-y style="height: {{goodImgsHeight}}px;">
+      <image mode='widthFix' src='{{baseUrl}}/{{imgSrc}}'></image>
+    </scroll-view>
+  </view>
+</ui-popup>

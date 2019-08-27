@@ -1,0 +1,83 @@
+/* pages/subIndex/customized/customized.wxss */
+@import "../../../common/libs/dataTimePicker/dataTimePicker.wxss";
+page{
+  background-color:white;
+}
+.container{
+  width:100%;
+  height:auto;
+}
+.containre_content{
+  width:100%;
+  height:274rpx;
+}
+.content{
+  width:88%;
+  height:auto;
+  margin:0 auto;
+  padding-top:35rpx;
+}
+.content_box{
+  width:100%;
+  height:50rpx;
+  display:flex;
+  justify-content:space-between;
+  padding:30rpx 0;
+}
+.content_text{
+  font-size:32rpx;
+}
+.content_icon{
+  width:70%;
+  height:auto;
+  display:flex;
+  color:#333;
+}
+.content_tips{
+  width:auto;
+  height:auto;
+  color:#333;
+  font-size:32rpx;
+  line-height:50rpx;
+}
+.content_input{
+  width:50%;
+  height:50rpx;
+  margin-right:20rpx;
+}
+.content_input input{
+  display:inline-block;
+  width:100%;
+  height:100% !important;
+  text-align:right;
+  /* border:1rpx solid #ddd; */
+}
+.container_button{
+  width:88%;
+  height:88rpx;
+  background:rgba(162,208,133,1);
+  border-radius:0px 0px 16rpx 16rpx;
+  position:absolute;
+  left:40rpx;
+  bottom:32rpx;
+  color:white;
+  font-size:32rpx;
+  text-align:center;
+  line-height:88rpx;
+}
+.picker_content{
+  width:100%;
+  height:100%;
+  display:flex;
+  text-align:right;
+}
+.select{
+  margin-left:auto;
+  display:flex;
+  /* border:1rpx solid red; */
+}
+.time_select{
+  width:100%;
+  height:auto;
+  background:red;
+}

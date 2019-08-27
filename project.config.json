@@ -1,0 +1,129 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"nodeModules": false,
+		"autoAudits": false,
+		"uglifyFileName": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.5.1",
+	"appid": "wx9fe088f499c08bd0",
+	"projectname": "%E9%B2%91%E8%9C%9C%E7%B2%BE%E5%93%81%E5%AF%BF%E5%8F%B8",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 10,
+			"list": [
+				{
+					"id": 0,
+					"name": "pages/tab/menu/menu",
+					"pathName": "pages/tab/menu/menu",
+					"query": "",
+					"scene": ""
+				},
+				{
+					"id": 1,
+					"name": "pages/tab/user/user",
+					"pathName": "pages/tab/user/user",
+					"query": "",
+					"scene": ""
+				},
+				{
+					"id": 2,
+					"name": "pages/subUser/myAddress/myAddress",
+					"pathName": "pages/subUser/myAddress/myAddress",
+					"query": "isChoose=true",
+					"scene": ""
+				},
+				{
+					"id": 3,
+					"name": "pages/subUser/myVoucher/myVoucher0",
+					"pathName": "pages/subUser/myVoucher/myVoucher0",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "pages/tab/shopCart/shopCart",
+					"pathName": "pages/tab/shopCart/shopCart",
+					"query": "",
+					"scene": ""
+				},
+				{
+					"id": 5,
+					"name": "pages/subUser/myVoucher/myVoucher2",
+					"pathName": "pages/subUser/myVoucher/myVoucher2",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "邀请有礼转发后打开",
+					"pathName": "pages/subIndex/activities_redBao/activities_redBao",
+					"query": "scene=ee73fef229ad4a0c89ce6d43a977269a",
+					"scene": 1007
+				},
+				{
+					"id": 7,
+					"name": "pages/orderConfirm/orderConfirm",
+					"pathName": "pages/orderConfirm/orderConfirm",
+					"query": "shopCartList=[{\"PACKAGE_PRICE\":10,\"PRICE\":13,\"SPEC_NAME\":\"小份\",\"IMG_URL\":\"group1/M00/00/22/wKgBZVxBSGiAZ1-qAAJZoq_IV3Q244.jpg\",\"PRODUCT_NAME\":\"三文鱼寿司\",\"GUIMI_SPEC_ID\":\"283a7ca05db24044947904284793ece0\",\"GUIMI_PRODUCT_ID\":\"17346d2eb9a1460c8ffe88d72a47327f\",\"GUIMI_SHOPPINGCART_ID\":\"f129e232d2fa40db9d3cf3aeeafe63de\",\"NUM\":1,\"TYPE\":\"0\",\"checked\":true}]",
+					"scene": ""
+				},
+				{
+					"id": -1,
+					"name": "pages/subIndex/activities_invite/activities_invite",
+					"pathName": "pages/subIndex/activities_invite/activities_invite",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 9,
+					"name": "菜单",
+					"pathName": "pages/tab/menu/menu",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 10,
+					"name": "pages/subUser/myAddress/addressEdit",
+					"pathName": "pages/subUser/myAddress/addressEdit",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/authorize/authorize",
+					"pathName": "pages/authorize/authorize",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

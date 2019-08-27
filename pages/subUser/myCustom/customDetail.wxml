@@ -1,0 +1,48 @@
+<!--pages/subUser/myCustom/customDetail.wxml-->
+<view class='container bgf'>
+  <view class='main'>
+    <view class='ul'>
+      <view class='ul-header border-bottom-dotted ui-font-bold'>商品列表({{dataLength.length}})</view>
+       <view wx:if="{{dataLength.length == 0}}" style="width:100%;height:auto;line-height:100rpx;text-align:center;padding-bottom:20rpx">暂无定制内容</view>
+      <view class='li lii' style="display:flex;justify-content:space-between;" wx:if="{{dataLength.length != 0}}" wx:for="{{inforList}}" wx:key="{{index}}" >
+          <view style="width:80%;">
+              <view class='li-inner'>
+                <view class='li-title ui-font-bold' style="font-size:32rpx;">{{item.PRODUCT_NAME}}</view>
+              </view>
+              <!-- <view class='li-title ui-font-bold' style="line-height:80rpx;">￥{{item.PRICE}}</view> -->
+              <view class='li-info'>
+                <!-- <view class='font-24 ui-c-gray-darker'>{{item.PRODUCT_SPEC}}</view> -->
+                <!-- <view class='font-24 ui-c-gray-darker'>数量</view> -->
+                <view class='font-24' style="padding-top:5rpx;">{{item.NUM}}份</view>
+              </view>
+          </view> 
+          <view style="width:28%; color:#F55A32;display:flex;justify-content:flex-end;line-height:80rpx">
+              <view style="line-height:82rpx;font-size:24rpx;">￥</view>
+              <view style="font-size:34rpx;">{{item.PRICE}}</view>
+          </view>
+      </view>
+      <view class="gongji">
+          <view class="gongtext">共计：</view>
+          <view class="gongnum"><view style="line-height:60rpx;font-size:30rpx;">￥</view><view style="font-size:40rpx;">{{totalPrice?totalPrice:0}}</view></view>
+      </view>
+    </view> 
+    <!-- <view class='cell font-32 ui-font-bold'>
+      餐具费：22元
+    </view> -->
+  </view>
+    <view class="container_button" wx:if="{{dataLength.length != 0}}">
+       <view class="container_box">
+           <view class="container_money">
+                <view class="money_text">需支付￥</view>
+                <view class="money">{{totalPrice?totalPrice:0}}</view>
+            </view> 
+            <view class="container_pay" wx:if="{{status == 2}}">
+                支付成功
+            </view>
+            <view class="container_pay" bindtap="payMent" wx:else>
+                去支付
+            </view>
+            
+       </view>  
+    </view>
+</view>

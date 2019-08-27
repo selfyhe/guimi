@@ -1,0 +1,16 @@
+<view class="mybillheader">
+  <view class='mybillheader-item' wx:for="{{invoiceTitleList}}" wx:key="{{index}}">
+    <text class='item-text'>{{item.TITLE}}</text>
+    <text class="item-active-sup {{item.ISDEFAULT == 1?'show':'hide'}}">默认</text>
+     <view class="mybillheader-icon" bindtap="goEditbill" data-titleid="{{item.GUIMI_INVOICE_TITLE_ID}}">
+        <ui-icon type="brush" size="20" color="#666" />
+      </view>
+      <!-- mybillheader-icon -->
+       <view class="detail-icon" bindtap="detailInvoice" data-titleid="{{item.GUIMI_INVOICE_TITLE_ID}}">
+        <ui-icon type="trash" size="20" color="#666" />
+      </view>
+  </view>
+  <view class='foot-btn'>
+    <view class='addbillhead-btn' catchtap='togoHead'>添加发票抬头</view>
+  </view>
+</view>

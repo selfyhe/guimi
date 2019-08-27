@@ -1,0 +1,71 @@
+/* pages/subUser/mySetting/mySetting.wxss */
+.header{
+  box-sizing: border-box;
+  padding: 80rpx 56rpx 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff; 
+}
+.button{
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 12rpx 40rpx;
+  font-size: 32rpx;
+  background: #A2D085;
+  color:#fff;
+  border-radius: 36rpx;
+}
+.avatar{
+  width: 132rpx;
+  height: 132rpx;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.cell{
+  box-sizing: border-box;
+  padding: 40rpx 56rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: #fff;
+  color: #333;
+  font-size: 36rpx;
+}
+.cell-hd{
+  width: 250rpx;
+}
+.cell-bd{
+  flex: 1;
+}
+.cell-input{
+
+}
+.cell-radio{
+  margin-right: 80rpx;
+  display: inline-flex;
+  align-items: center;
+  color: #333;
+  font-size: 32rpx;
+}
+.cell-radio>icon{
+  margin-right: 20rpx;
+}
+/*  */
+.affix-bar{
+  box-sizing: border-box;
+  width: 100%;
+  padding: 30rpx 40rpx; 
+  position: fixed;
+  left: 0;
+  bottom: 0;   
+} 
+.affix-bar-button{ 
+  font-size: 32rpx;
+  color: #fff;
+  background: #A2D085;
+  padding: 22rpx 0;
+  text-align: center;
+  line-height: 1.4;
+  border-radius: 0 0 20rpx 20rpx;
+}

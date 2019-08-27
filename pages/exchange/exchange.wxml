@@ -1,0 +1,48 @@
+<!--pages/exchange/exchange.wxml-->
+<view class='container pd110'>
+  <view class='playbill'>
+    <image src='{{baseUrl}}/{{poster.IMG_URL}}' mode='aspectFill'/>
+    <!-- <image src='{{baseUrl}}/{{poster.IMG_URL}}' mode='aspectFill' catchtap='handleNavigator' data-url='{{item.JUMP_TO_ID}}'/> -->
+  </view>
+  <view class='main'>
+    <view class='tabs mb30'>
+      <view class="tab-item {{index === tabsCurrent ? 'tab-item-active':''}}" wx:for="{{tabs}}" wx:key="{{item.GUIMI_EXCHANGE_SCENE_ID}}" bindtap='handleItemClick' data-index='{{index}}'>
+        <view class='tab-item-hd'>{{item.NAME}}</view>
+        <view class='tab-item-bd'>{{item.sub}}</view>
+      </view>
+    </view>
+    <!--  -->
+    <view class='list mb20'>
+      <view class='list-item ui-hairline--bottom' wx:for="{{tabs[tabsCurrent].productList}}" wx:key="{{item.GUIMI_PRODUCT_ID}}">
+        <view class='list-item-media'>
+          <image src='{{baseUrl}}/{{item.IMG_URL}}' />
+        </view>
+        <view class='list-item-inner'>
+          <view class='list-item-top'>
+            <view class='list-item-title'>
+              {{item.PRODUCT_NAME}}
+              <text class="pull-right {{item.exchange ? 'color-333' : ''}}">{{item.NUM}}/{{item.TOTALNUM}}</text>
+            </view>
+            <view class='list-item-txt'>
+              {{item.GUIMI_SPEC}}
+            </view>
+          </view>
+          <view class='list-item-bottom'>
+            <view class='list-item-price'>￥{{item.PRICE}}</view>
+            <view class="list-item-button {{item.exchange ? '' : 'list-item-button--disabled'}}" data-index='{{index}}' data-id='{{item.GUIMI_EXCHANGE_ID}}' catchtap='handleButtonExchange'>
+              {{item.exchangeTxt}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+</view>
+<view class='affix-box' wx:if="{{tabs[tabsCurrent].sub !== '正在兑换' }}">
+<!-- <view class='btn-appointment' bindtap='handleShousiMake'>预约{{tabs[tabsCurrent].NAME}}场</view> -->
+<form bindsubmit="formSubmit" report-submit="true">
+   <button formType="submit" type='defalut' class='btn-appointment'>预约{{tabs[tabsCurrent].NAME}}场</button>
+  </form>
+</view>
+<!--  -->

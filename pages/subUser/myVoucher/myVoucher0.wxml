@@ -1,0 +1,44 @@
+<!--pages/subUser/myVoucher/myVoucher.wxml-->
+<view class='container pd110'>
+  <view class='main'>
+    <block wx:if="{{list.length}}">
+      <view class="card" wx:for="{{list}}" wx:key="{{item.GUIMI_USER_COUPON_ID}}" bind:tap="{{isChoose ? 'handleCardClick' : 'handleEmptyClick'}}" data-index="{{index}}">
+        <view class='button-orig' style="{{isChoose ? '' : 'padding-left:180rpx;padding-top:38rpx;'}}" wx:if="{{item.ORIG_TYPE}}">{{origTypes[item.ORIG_TYPE]}}</view>
+        <view class='card-radio' wx:if="{{isChoose}}">
+          <icon class='card-radio-icon' type="{{item.checked? 'success' : 'circle'}}" size="20" color="{{item.checked ?'#4EC487':'#979797'}}" /> 
+      </view>
+        <view class='card-hd'>
+          <view class='card-price'>
+            <text class='font-24'>￥</text>{{item.WORTH}}</view>
+          <!-- <view class='card-toprice'>满{{item.REACH_PRICE}}元可用</view> -->
+        </view>
+        <view class='card-bd'>
+          <view class='card-title'>使用条件：
+            <block wx:if="{{item.REACH_PRICE}}">满{{item.REACH_PRICE}}元可用</block>
+            <block wx:else>无门槛</block>
+          </view>
+          <view class='card-title'>使用范围：所有{{types[item.PRODUCT_TYPE]}}（优惠商品不可使用）</view>
+          <view class='card-txt'>有效期：{{parse.dateSlice(item.CREATE_DATE)}}至{{parse.dateSlice(item.EXPRIE_DATE)}}</view>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <ui-load-more tip="暂无可用{{voucherItems[voucherCurrent]}}" loading="{{ false }}" />
+    </block>
+  </view>
+</view>
+<!-- 底部栏 -->
+<view class='affix-bar' wx:if="{{isChoose}}">
+  <view class='affix-bar-button' bindtap='handleVoucherSave'>确定</view>
+</view>
+<wxs module="parse">
+  module.exports = {
+    dateSlice: function(value) {
+      if (value) {
+        return value.slice(0, 10)
+      } else {
+        return ''
+      }
+    }
+  }
+</wxs>

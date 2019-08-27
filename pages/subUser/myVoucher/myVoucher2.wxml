@@ -1,0 +1,50 @@
+<!--pages/subUser/myVoucher/myVoucher.wxml-->
+<view class='container pd110'>
+  <view class='main'>
+    <block wx:if="{{list.length}}">
+      <view class="panel" wx:for="{{list}}" wx:key="{{item.GUIMI_USER_COUPON_ID}}" bind:tap="handleCardClick" data-index='{{index}}'>
+        <view class='panel-wrap'>
+        <view class='panel-radio'>
+          <icon class='panel-radio-icon' type="{{item.checked? 'success' : 'circle'}}" size="20" color="{{item.checked ?'#4EC487':'#979797'}}" /> 
+        </view>
+          <view class='panel-inner'>
+          <view class='panel-inner-hd'>
+            <view class='panel-inner-media'><image src='{{baseUrl}}/{{item.IMG_URL}}'/><view class='panel-inner-jianp'>{{item.PRICE}}元兑换</view></view>
+          </view>
+          <view class='panel-inner-bd'>
+            <view class='panel-inner-hd-title'>{{item.PRODUCT_NAME}}</view>
+            <!-- <view class='panel-inner-hd-txt'>{{item.SPEC_NAME}}</view> -->
+             <view class='panel-inner-hd-txt'>该商品劵不能享受优惠劵减免</view>
+          </view>
+          <view class='panel-inner-ft'>
+          <!-- <view class='panel-inner-ft-price'>￥<text class='font-72'>{{item.PRICE}}</text></view> -->
+            
+          </view>
+        </view>
+        <view class='panel-bottom'>
+          <!-- <view class='panel-bottom-title'>可用于{{item.TYPE}}商品</view> -->
+          <view class='panel-bottom-txt'>有效期：{{parse.dateSlice(item.CREATE_DATE)}}至{{parse.dateSlice(item.EXPRIE_DATE)}}</view>
+        </view>
+        </view>
+      </view>
+      </block>
+      <block wx:else>
+    <ui-load-more tip="暂无可用商品券" loading="{{ false }}" />
+  </block>
+  </view>
+</view>
+<!-- 底部栏 -->
+<view class='affix-bar' wx:if="{{list.length}}">
+  <view class='affix-bar-button' bindtap='handleVoucherSave'>确定</view>
+</view>
+<wxs module="parse">
+  module.exports = {
+    dateSlice: function(value) {
+      if (value) {
+        return value.slice(0, 10)
+      } else {
+        return ''
+      }
+    }
+  }
+</wxs>

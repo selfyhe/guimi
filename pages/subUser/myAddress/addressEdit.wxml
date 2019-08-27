@@ -1,0 +1,117 @@
+<!--pages/subUser/myAddress/addressEdit.wxml-->
+<form bindsubmit="formSubmit" wx:if="{{edit == 1}}">
+  <view class='container bgf'>
+    <view class='cell ui-hairline--bottom'>
+      <view class='cell-hd'>联系人</view>
+      <view class='cell-bd'>
+        <input class='cell-input' type='text' name="name" placeholder='用于取餐时对您的称呼' value="{{addressDetails.CONTACT}}" />
+      </view>
+    </view>
+    <view class='cell ui-hairline--bottom'>
+      <view class='cell-hd'>性别</view>
+      <view class='cell-bd'>
+        <input name="sex" value='{{sex}}' class='hide' />
+        <view class='cell-radio' catchtap='radioChange' data-value='1'>
+          <icon class='cell-radio-icon' type="{{sex == 1 ? 'success' : 'circle'}}" size="20" color="{{sex == 1?'#4EC487':'#979797'}}" />
+          <text class='cell-radio-txt' class="i-radio-title">先生</text>
+        </view>
+        <view class='cell-radio' catchtap='radioChange' data-value='0'>
+          <icon class='cell-radio-icon' type="{{sex == 0 ? 'success' : 'circle'}}" size="20" color="{{sex == 0?'#4EC487':'#979797'}}" />
+          <text class='cell-radio-txt' class="i-radio-title">女士</text>
+        </view>
+      </view>
+    </view>
+    <view class='cell ui-hairline--bottom'>
+      <view class='cell-hd'>手机号</view>
+      <view class='cell-bd'>
+        <input class='cell-input' type='number' maxlength='11' name="number" placeholder='请填写手机号码' value="{{addressDetails.CONTACT_PHONE}}" />
+      </view>
+    </view>
+    <view class='cell ui-hairline--bottom'>
+      <view class='cell-hd'>地址</view>
+      <view class='cell-bd' catchtap='chooseLocation'>
+        <!-- <input class='cell-input' type='text' name="sss" placeholder='请选择收货地址' /> -->
+        <block wx:if="{{location}}">{{location}}</block>
+        <block wx:else>{{addressDetails.ADDRESS}}</block>
+        <!-- <block wx:else><text class="ui-c-gray-dark">请选择收货地址</text></block> -->
+      </view>
+      <view class='cell-ft'>
+        <ui-icon type="enter" size="20" color="#999" />
+      </view>
+    </view>
+    <view class='cell ui-hairline--bottom'>
+      <view class='cell-hd'>门牌号</view>
+      <view class='cell-bd'>
+        <input class='cell-input' type='text' name="sss" placeholder='如：5栋408'  value="{{addressDetails.HOUSE_NUM}}" />
+      </view>
+    </view>
+    <view class='cell'>
+      <view class='cell-radio' catchtap='handleDefaultChecked'>
+        <icon class='cell-radio-icon mr30' type="{{checked ? 'success' : 'circle'}}" size="20" color="{{checked?'#4EC487':'#979797'}}" /><text class='ui-c-gray-dark'>设为默认地址</text>
+      </view>
+    </view>
+  </view>
+  <!-- 底部栏 -->
+  <view class='affix-bar'>
+    <!-- <view class='affix-bar-button' bindtap='handleAddressSave'>保存</view> -->
+    <button class='affix-bar-button' form-type="submit">保存</button>
+  </view>
+</form>
+
+<form bindsubmit="formSubmit" wx:if="{{add == 0}}">
+  <view class='container bgf'>
+    <view class='cell ui-hairline--bottom'>
+      <view class='cell-hd'>联系人</view>
+      <view class='cell-bd'>
+        <input class='cell-input' type='text' name="name" placeholder='用于取餐时对您的称呼' />
+      </view>
+    </view>
+    <view class='cell ui-hairline--bottom'>
+      <view class='cell-hd'>性别</view>
+      <view class='cell-bd'>
+        <input name="sex" value='{{sex}}' class='hide' />
+        <view class='cell-radio' catchtap='radioChange' data-value='1'>
+          <icon class='cell-radio-icon' type="{{sex == 1 ? 'success' : 'circle'}}" size="20" color="{{sex == 1?'#4EC487':'#979797'}}" />
+          <text class='cell-radio-txt' class="i-radio-title">先生</text>
+        </view>
+        <view class='cell-radio' catchtap='radioChange' data-value='0'>
+          <icon class='cell-radio-icon' type="{{sex == 0 ? 'success' : 'circle'}}" size="20" color="{{sex == 0?'#4EC487':'#979797'}}" />
+          <text class='cell-radio-txt' class="i-radio-title">女士</text>
+        </view>
+      </view>
+    </view>
+    <view class='cell ui-hairline--bottom'>
+      <view class='cell-hd'>手机号</view>
+      <view class='cell-bd'>
+        <input class='cell-input' type='number' maxlength='11' name="number" placeholder='请填写手机号码' />
+      </view>
+    </view>
+    <view class='cell ui-hairline--bottom'>
+      <view class='cell-hd'>地址</view>
+      <view class='cell-bd' catchtap='chooseLocation'>
+        <!-- <input class='cell-input' type='text' name="sss" placeholder='请选择收货地址' /> -->
+        <block wx:if="{{location}}">{{location}}</block>
+        <block wx:else><text class="ui-c-gray-dark">请选择收货地址</text></block>
+      </view>
+      <view class='cell-ft'>
+        <ui-icon type="enter" size="20" color="#999" />
+      </view>
+    </view>
+    <view class='cell ui-hairline--bottom'>
+      <view class='cell-hd'>门牌号</view>
+      <view class='cell-bd'>
+        <input class='cell-input' type='text' name="sss" placeholder='如：5栋408' />
+      </view>
+    </view>
+    <view class='cell'>
+      <view class='cell-radio' catchtap='handleDefaultChecked'>
+        <icon class='cell-radio-icon mr30' type="{{checked ? 'success' : 'circle'}}" size="20" color="{{checked?'#4EC487':'#979797'}}" /><text class='ui-c-gray-dark'>设为默认地址</text>
+      </view>
+    </view>
+  </view>
+  <!-- 底部栏 -->
+  <view class='affix-bar'>
+    <!-- <view class='affix-bar-button' bindtap='handleAddressSave'>保存</view> -->
+    <button class='affix-bar-button' form-type="submit">保存</button>
+  </view>
+</form>

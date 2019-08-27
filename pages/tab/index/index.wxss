@@ -1,0 +1,146 @@
+page{
+  background: #fff;
+}
+.container{
+
+}
+.slider-box{
+  
+}
+.slide-box{ 
+  box-sizing: border-box;
+  width: 100%;
+  height: 430rpx;
+}
+.slide-container{
+  width: 100%;
+  height: 430rpx;
+}
+.slide-image{
+  /* border-radius: 5px; */
+}
+.main{ 
+  background: #fff;
+}
+.cell-box{
+  padding: 0 40rpx;
+}
+.cell{
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32rpx 0;
+}
+/* .cell:active{
+  background-color: rgba(0, 0, 0, 0.1); opacity: 0.7;
+} */
+.cell-hd{
+
+}
+.cell-bd{
+
+}
+
+.cell-img{
+  width: 82rpx;
+  height: 82rpx;
+}
+.cell-title{
+  font-size: 30rpx;
+  color: #000;
+  font-weight:bold;
+}
+.cell-txt{
+  font-size: 22rpx;
+  color: #666;
+}
+.cell-img{
+}
+.banner{  
+  height: 120rpx;
+  margin: 0 40rpx 30rpx;
+}
+/* 新人红包 */
+.redBao-box{
+  position: relative;
+  width: 560rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.redBao-inner{
+  position: relative;
+}
+.redBao-img{
+  width: 560rpx;
+  /* height:700rpx; */
+  /*  鲑蜜设计要求 */
+  height:787rpx;
+  /* background: #eee; */
+}
+.redBao-close{
+  /* position: absolute;
+  top: 0;
+  right: 0; */
+  padding: 30rpx;
+  text-align:center;
+  /* border: 1px solid #fff; */
+  /* border-radius: 50%; */
+}
+/* 原生button */
+.authorizePhone{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 200;
+}
+.sharebutton{
+  width:100%;
+  height:100%;
+  background:#fff;
+  padding:0 !important;
+}
+/*  popup  */
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+  animation:fadeIn .3s ease-in-out;
+}
+
+.popup-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  z-index: 999;
+  max-height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+  /* background-color: #fff; */
+  -webkit-overflow-scrolling: touch;
+  animation:fadeIn .3s ease-in-out;
+}
+.fadeIn{
+  animation-name:fadeIn;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

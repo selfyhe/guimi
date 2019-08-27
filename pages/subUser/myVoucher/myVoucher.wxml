@@ -1,0 +1,56 @@
+<!--pages/subUser/myVoucher/myVoucher.wxml-->
+<view class='container'>
+  <!-- <view class='tabs'>
+    <view class="tab-item {{voucherCurrent == index ? 'tab-item-active': ''}}" wx:for="{{voucherItems}}" wx:key="{{index}}" data-index='{{index}}' bindtap='handleItemsClick'>{{item}}</view>
+  </view> -->
+  <view class='main'>
+    <!-- <view wx:if="{{voucherCurrent < 2}}"> -->
+    <block wx:if="{{list.length}}">
+      <view class="card" wx:for="{{list}}" wx:key="{{item.GUIMI_USER_COUPON_ID}}" bind:tap='handleCardClick'>
+        <view class='card-hd'>
+          <view class='card-price'>
+            <text class='font-24'>￥</text>{{item.WORTH}}</view>
+          <view class='card-toprice'>满{{item.REACH_PRICE}}元可用</view>
+        </view>
+        <view class='card-bd'>
+          <view class='card-title'>可用于{{item.PRODUCT_TYPE}}商品</view>
+          <view class='card-txt'>有效期：{{item.CREATE_DATE}}至{{item.EXPRIE_DATE}}</view>
+        </view>
+      </view>
+      </block>
+      <block wx:else>
+    <ui-load-more tip="暂无可用{{voucherItems[voucherCurrent]}}" loading="{{ false }}" />
+  </block>
+    <!-- </view> -->
+    <!-- <view wx:if="{{voucherCurrent == 2}}">
+    <block wx:if="{{list.length}}">
+      <view class="panel" wx:for="{{list}}" wx:key="{{item.GUIMI_USER_COUPON_ID}}" bind:tap='handleCardClick' data-index='{{index}}'>
+        <view class='panel-wrap'>
+          <view class='panel-inner'>
+          <view class='panel-inner-hd'>
+            <view class='panel-inner-media'><image src='{{baseUrl}}/{{item.IMG_URL}}'/></view>
+          </view>
+          <view class='panel-inner-bd'>
+            <view class='panel-inner-hd-title'>{{item.PRODUCT_NAME}}</view>
+            <view class='panel-inner-hd-txt'>{{item.SPEC_NAME}}</view>
+
+          </view>
+          <view class='panel-inner-ft'>
+          <view class='panel-inner-ft-price'>￥<text class='font-72'>{{item.PRICE}}</text></view>
+            
+          </view>
+        </view>
+        <view class='panel-bottom'>
+          <view class='panel-bottom-title'>可用于{{item.TYPE}}商品</view>
+          <view class='panel-bottom-txt'>有效期：{{item.CREATE_DATE}}至{{item.EXPRIE_DATE}}</view>
+        </view>
+        </view>
+      </view>
+      </block>
+      <block wx:else>
+    <ui-load-more tip="暂无可用{{voucherItems[voucherCurrent]}}" loading="{{ false }}" />
+  </block>
+    </view> -->
+    
+  </view>
+</view>

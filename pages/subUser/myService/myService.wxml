@@ -1,0 +1,19 @@
+<view class="container">
+    <view class="container_content" wx:for="{{serviceList}}" wx:key="{{index}}" bindtap="viewService" data-title="{{item.SER_TYPE_NAME}}" data-id="{{item.GUIMI_SERVER_TYPE_ID}}"> 
+       <view class="container_text">{{item.SER_TYPE_NAME}}</view>
+       <view class="container_arrow">
+            <ui-icon type="enter" color='#999' size='24' /> 
+       </view>
+    </view>
+    <view class="container_content" bindtap="viewFeeldback">
+       <view class="container_text">意见反馈</view>
+       <view class="container_arrow">
+            <ui-icon type="enter" color='#999' size='24' />
+       </view>
+    </view>
+</view>
+<!-- 底部栏 -->
+<view class='affix-bar'>
+  <!-- <view class='affix-bar-button' bindtap='handleUserInfoSave'>客户服务</view> -->
+  <button class='affix-bar-button' open-type="contact" bindcontact="handleContact"><ui-icon type="customerservice_fill" size='20' />客户服务</button>
+</view>

@@ -1,0 +1,37 @@
+.dialog{
+
+}
+.dialog-mask{
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, .3)
+}
+.dialog-content{
+  position: fixed;
+  z-index: 100;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  box-sizing: border-box;
+  width: 80%;
+  padding: 40rpx;
+  background: #fff;
+  color: #333;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 32rpx;
+}
+.dialog-main{
+  font-size: 28rpx;
+  padding: 40rpx 0;
+}
+.btn-author{
+  border-radius: 30rpx;
+  background: #D35045;
+  font-size: 28rpx;
+  color: #fff;
+}

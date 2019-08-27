@@ -1,0 +1,24 @@
+/* pages/subUser/myInvoice/myrecord.wxss */
+page{
+  background-color:#fff;
+}
+.myrecord{
+  border-top:2rpx solid #f6f6f6;
+  padding:0 40rpx;
+}
+.myrecord-item{
+  padding: 40rpx 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom:2rpx solid #f6f6f6;
+}
+.item-bill{
+  font-weight: bold;
+  margin-bottom: 28rpx;
+}
+.item-text{
+  color:#666;
+  font-size: 28rpx;
+}

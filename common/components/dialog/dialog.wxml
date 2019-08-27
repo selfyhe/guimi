@@ -1,0 +1,14 @@
+<view class="dialog-mask {{ visible ? 'dialog-mask-show ' : '' }}"></view>
+<view class="dialog {{ visible ? 'dialog-show' : '' }}">
+  <view class='dialog-main'>
+    <view class='dialog-content'>
+      <view class='dialog-title' wx:if="{{title}}">{{title}}</view>
+      <view class='dialog-body'><slot></slot></view>
+      <view class='dialog-actions'>
+        <view  wx:if="{{ showCancel }}" class='dialog-btn dialog-btn-cancel' bindtap='handleClickCancel'>{{cancelText}}</view>
+        <view  wx:if="{{ showOk }}" class='dialog-btn dialog-btn-ok' bindtap='handleClickOk'>{{okText}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- <view class='dialog-btn-loading'></view> -->

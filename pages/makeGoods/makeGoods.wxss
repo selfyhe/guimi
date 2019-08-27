@@ -1,0 +1,56 @@
+/* pages/makeGoods.wxss */
+@import "../tab/menu/menu.wxss";
+.container{
+  padding-top: 0;
+}
+/*  */
+.affix-bar{ 
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20rpx 40rpx; 
+  position: fixed;
+  z-index: 99;
+  left: 0;
+  bottom: 0;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+  font-size: 28rpx;
+  color: #fff;
+  background: #A2D085;
+  /* text-align: center;  */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.affix-bar-hd{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.affix-bar-hd-left{
+  
+}
+.btn-settlement{
+  display: inline-block;
+  padding: 14rpx 64rpx;
+  border: 1px solid #fff;
+  border-radius: 36rpx;
+} 
+.affix-bar-message{
+  position: absolute;
+  top: -70rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8rpx 30rpx;
+  border-radius:28rpx;
+  color: #fff;
+  font-size: 24rpx;
+  background: #A2D085;
+  white-space: nowrap;
+}
+.font-44{
+  font-size: 44rpx;
+}
+.ml10{
+  margin-left: 10rpx;
+}

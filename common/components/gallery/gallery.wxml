@@ -1,0 +1,6 @@
+<view class="gallery {{galleryShow ? 'fadeIn' :''}}" style="{{galleryShow ? 'display:block;':''}}" bindtap='closeGallery'>
+  <view class='gallery-img' style="background-image:url({{img}})"></view>
+  <view class='gallery-opr'> 
+    <image class='icon-del' src='/images/icon_del.png' catchtap='delImg'></image>
+  </view>
+</view>

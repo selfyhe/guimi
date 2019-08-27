@@ -1,0 +1,2 @@
+/* pages/subUser/myCustom/myCustom.wxss */
+@import '/pages/subUser/myOrder/myOrder.wxss'

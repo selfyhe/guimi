@@ -1,0 +1,104 @@
+{
+  "pages": [
+    "pages/tab/index/index",
+    "pages/authorize/authorize",
+    "pages/tab/menu/menu",
+    "pages/tab/sushiKu/sushiKu",
+    "pages/tab/shopCart/shopCart",
+    "pages/tab/user/user",
+    "pages/location/location",
+    "pages/exchange/exchange",
+    "pages/exchange/myRedbao",
+    "pages/orderConfirm/orderConfirm",
+    "pages/makeGoods/makeGoods",
+    "pages/takeRedbao/takeRedbao"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "鲑蜜精品寿司",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#333",
+    "selectedColor": "#5CAE32",
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/tab/index/index",
+        "text": "首页",
+        "iconPath": "/images/nav/index.png",
+        "selectedIconPath": "/images/nav/index_on.png"
+      },
+      {
+        "pagePath": "pages/tab/menu/menu",
+        "text": "菜单",
+        "iconPath": "/images/nav/menu.png",
+        "selectedIconPath": "/images/nav/menu_on.png"
+      },
+      {
+        "pagePath": "pages/tab/shopCart/shopCart",
+        "text": "购物车",
+        "iconPath": "/images/nav/shopCart.png",
+        "selectedIconPath": "/images/nav/shopCart_on.png"
+      },
+      {
+        "pagePath": "pages/tab/user/user",
+        "text": "我的",
+        "iconPath": "/images/nav/user.png",
+        "selectedIconPath": "/images/nav/user_on.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "ui-icon": "/common/components/icon/icon",
+    "ui-load-more": "/common/components/load-more/load-more"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序定位到您当前所在门店"
+    }
+  },
+  "subPackages": [
+    {
+      "root": "pages/subIndex/",
+      "pages": [
+        "activities_invite/activities_invite",
+        "activities_redBao/activities_redBao",
+        "customized/customized",
+        "community/community",
+        "communityIndex/communityIndex"
+      ]
+    },
+    {
+      "root": "pages/subUser/",
+      "pages": [
+        "feedback/feedback",
+        "myAddress/myAddress",
+        "myAddress/addressEdit",
+        "myCustom/myCustom",
+        "myCustom/customDetail",
+        "myIntegral/myIntegral",
+        "myInvoice/myInvoice",
+        "myInvoice/billdetails",
+        "myInvoice/editbill",
+        "myInvoice/mybillheader",
+        "myInvoice/myrecord",
+        "myOrder/myOrder",
+        "myOrder/orderDetail",
+        "myService/myService",
+        "myService/serviceDetial",
+        "mySetting/mySetting",
+        "myTaste/myTaste",
+        "myTrades/myTrades",
+        "myVoucher/myVoucher",
+        "myVoucher/myVoucher0",
+        "myVoucher/myVoucher2",
+        "myWallet/myWallet"
+      ]
+    }
+  ],
+  "debug": true,
+  "sitemapLocation": "sitemap.json"
+}

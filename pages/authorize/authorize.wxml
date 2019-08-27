@@ -1,0 +1,12 @@
+<!--page/authorize/authorize.wxml-->
+<view class="container">
+  <view class='auth-header'>
+    <image class="auth-logo" src="/images/logo.png" />
+    <view class='auth-name'>鲑蜜精品寿司</view>
+  </view>
+  <view class='auth-content ui-hairline--top'>
+    <view class='auth-title'>请确定以下授权信息</view>
+    <view class='auth-info'>获取你的信息（头像，昵称等）</view>
+  </view>
+  <button type='primary' class='button' open-type="getUserInfo" bindgetuserinfo="getUserInfo">一键授权</button> 
+</view>

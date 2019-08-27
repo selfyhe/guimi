@@ -1,0 +1,46 @@
+/* pages/subUser/myService/myService.wxss */
+page{
+  background:white !important;
+}
+.container{
+  width:100%;
+  height:auto;
+}
+.container_content{
+  width:85%;
+  height:auto;
+  margin:0 auto;
+  position:relative;
+  border-bottom:1rpx solid #F6F6F6;
+}
+.container_arrow{
+  box-sizing:border-box;
+  width:32rpx;
+  height:32rpx;
+  position:absolute;
+  top:35rpx;
+  right:0;
+}
+.container_text{
+  color:#333;
+  font-size:32rpx;
+  line-height:120rpx;
+}
+/*  */
+.affix-bar{
+  box-sizing: border-box;
+  width: 100%;
+  padding: 30rpx 40rpx; 
+  position: fixed;
+  left: 0;
+  bottom: 0;   
+} 
+.affix-bar-button{ 
+  font-size: 32rpx;
+  color: #fff;
+  background: rgba(162,208,133,1);
+  padding: 22rpx 0;
+  text-align: center;
+  line-height: 1.4;
+  border-radius: 0 0 20rpx 20rpx;
+}  

@@ -1,0 +1,155 @@
+<view class="container">
+  <view class='userInfo-box'>
+    <view class='userInfo-inner' data-url="/pages/subUser/mySetting/mySetting" bindtap='handleNavigator'>
+      <view class='userInfo-hd'>
+        <view class='userInfo-avatar'>
+          <!-- <open-data type="userAvatarUrl"></open-data> -->
+          <image src="{{userInfo.AVATARURL}}" />
+        </view>
+      </view>
+      <view class='userInfo-bd'>
+        <view class='userInfo-name'>
+          <!-- <open-data type="userNickName"></open-data> -->
+          {{userInfo.NICKNAME}}
+        </view>
+        <view class='userInfo-phone'>{{userInfo.MOBILE ? parse.phoneFormat(userInfo.MOBILE) : '未绑定号码'}}</view>
+      </view>
+      <view class='userInfo-ft'>
+        <ui-icon type="setup" color='#fff' size='30' />
+      </view>
+    </view>
+  </view>
+  <view class='ul mb20'>
+    <navigator class='li' url='/pages/subUser/myWallet/myWallet'>
+      <view class='li-title'>
+        <text class='font-28'>￥</text>{{userCount.BALANCE}}</view>
+      <view class='li-txt'>余额</view>
+    </navigator>
+    <navigator class='li' url='/pages/subUser/myVoucher/myVoucher0'>
+      <view class='li-title'>{{userCount.couponCount}}</view>
+      <view class='li-txt'>优惠券</view>
+    </navigator>
+    <!-- <navigator class='li' url='/pages/tab/sushiKu/sushiKu'>
+      <view class='li-title'>{{userCount.productCouponCount}}</view>
+      <view class='li-txt'>寿司库</view>
+    </navigator> -->
+    <navigator class='li' url='/pages/subUser/myVoucher/myVoucher2'>
+      <view class='li-title'>{{userCount.productCouponCount}}</view>
+      <view class='li-txt'>商品券</view>
+    </navigator>
+    <!-- <navigator class='li' url='/pages/subUser/myIntegral/myIntegral'>
+      <view class='li-title'>{{userCount.integral}}</view>
+      <view class='li-txt'>积分</view>
+    </navigator> -->
+  </view>
+  <view class='panel pr'>
+    <view class='panel-hd'>
+      <view class='panel-hd-title'>我的订单</view>
+      <button wx:if="{{!userInfo.MOBILE}}" class='authorizePhone panel-hd-more' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-url="/pages/subUser/myOrder/myOrder?STATUS=0">查看全部
+        <ui-icon type="enter" color='#999' size='20' />
+      </button>
+
+      <view wx:if="{{userInfo.MOBILE}}" data-url="/pages/subUser/myOrder/myOrder?STATUS=0" bindtap='handleNavigator' class='panel-hd-more'>查看全部
+        <ui-icon type="enter" color='#999' size='20' />
+      </view>
+    </view>
+    <view class='panel-bd'>
+      <button class='panel-grid' wx:if="{{!userInfo.MOBILE}}" wx:for="{{orderItems}}" wx:key="{{index}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-url="/pages/subUser/myOrder/myOrder?STATUS={{index}}">
+        <view class='badge' wx:if="{{index == 0 && userCount.unpayOrderCount}}">{{userCount.unpayOrderCount}}</view>
+        <view class='panel-grid-img'>
+          <image class='icon-msg' mode='widthFix' src='/images/order_icon_{{index+1}}.png' />
+        </view>
+        <view class='panel-grid-title'>{{item.title}}</view>
+      </button>
+      <view class='panel-grid' wx:if="{{userInfo.MOBILE}}" wx:for="{{orderItems}}" wx:key="{{index}}" bindtap="goMyorder" data-url="/pages/subUser/myOrder/myOrder?STATUS={{index}}">
+        <view class='badge' wx:if="{{index == 0 && userCount.unpayOrderCount}}">{{userCount.unpayOrderCount}}</view>
+        <view class='panel-grid-img'>
+          <image class='icon-msg' mode='widthFix' src='/images/order_icon_{{index+1}}.png' />
+        </view>
+        <view class='panel-grid-title'>{{item.title}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='ad-box'>
+    <!-- <scroll-view scroll-x>
+      <view class='ad-item' wx:if="{{adList.length}}" wx:for="{{adList}}" wx:key="{{item.GUIMI_ADVERTISEMENT_ID}}" bindtap='handleNavigator' data-url='{{item.JUMP_TO_ID}}'>
+        <image src='{{baseUrl}}/{{item.IMG_URL}}' />
+      </view>
+    </scroll-view> -->
+    <view class="ad_box_after">
+      <view class='ad-item' wx:if="{{adList.length}}" wx:for="{{adList}}" wx:key="{{item.GUIMI_ADVERTISEMENT_ID}}" bindtap='handleNavigator' data-url='{{item.JUMP_TO_ID}}'>
+        <image src='{{baseUrl}}/{{item.IMG_URL}}' />
+      </view>
+    </view>
+  </view>
+  <view class='cells mb30'>
+    <view class='cell ui-hairline--bottom'>
+      <navigator class='' url="/pages/subUser/myCustom/myCustom" hover-class="navigator-hover">
+        <view class='cell-hd'>
+          <view class='icon-inner mr20'>
+            <image class='icon-custom' src='/images/icon_custom.png' />
+          </view>
+        </view>
+        <view class='cell-bd'>
+          <view class='cell-p'>我的定制</view>
+        </view>
+        <view class='cell-ft'>
+          <ui-icon type="enter" color='#999' size='24' />
+        </view>
+      </navigator>
+    </view>
+    <view class='cell ui-hairline--bottom'>
+      <navigator class='' url="/pages/subUser/myAddress/myAddress" hover-class="navigator-hover">
+        <view class='cell-hd'>
+          <view class='icon-inner mr20'>
+            <image class='icon-addres' src='/images/icon_address.png' />
+          </view>
+        </view>
+        <view class='cell-bd'>
+          <view class='cell-p'>我的地址</view>
+        </view>
+        <view class='cell-ft'>
+          <ui-icon type="enter" color='#999' size='24' />
+        </view>
+      </navigator>
+    </view>
+    <view class='cell ui-hairline--bottom'>
+      <navigator class='' url="/pages/subUser/myInvoice/myInvoice" hover-class="navigator-hover">
+        <view class='cell-hd'>
+          <view class='icon-inner mr20'>
+            <image mode="widthFix" class='icon-invoice' src='/images/icon_invoice.png' />
+          </view>
+        </view>
+        <view class='cell-bd'>
+          <view class='cell-p'>发票管理</view>
+        </view>
+        <view class='cell-ft'>
+          <ui-icon type="enter" color='#999' size='24' />
+        </view>
+      </navigator>
+    </view>
+    <view class='cell'>
+      <navigator class='' url="/pages/subUser/myService/myService" hover-class="navigator-hover">
+        <view class='cell-hd'>
+          <view class='icon-inner mr20'>
+            <image class='icon-service' src='/images/icon_service.png' />
+          </view>
+        </view>
+        <view class='cell-bd'>
+          <view class='cell-p'>客户服务</view>
+        </view>
+        <view class='cell-ft'>
+          <ui-icon type="enter" color='#999' size='24' />
+        </view>
+      </navigator>
+    </view>
+  </view>
+  <!-- <view class='copyright'>易利科技提供技术支持</view> -->
+</view>
+<wxs module="parse">
+  module.exports = {
+    phoneFormat: function(value) {
+      return value.replace(value.substring(3, 7), "****")
+    }
+  }
+</wxs>

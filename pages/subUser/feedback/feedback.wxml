@@ -1,0 +1,28 @@
+<!--pages/subUser/feedback/feedback.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset" style="z-index:99;">
+<view class="container">
+    <view class="container_content">
+        <view class="container_title">问题反馈</view>
+        <view class="container_text">
+            <textarea name="feedbackContent"   placeholder="请填写问题描述以便我们提供更好的帮助" placeholder-style="font-size:28rpx"></textarea>
+           
+        </view>  
+    </view>
+    <view class="container_division"></view>
+    <view class="container_content">
+        <view class="container_title">上传图片</view>
+        <view class="container_content_text">提供问题截图(选填)</view>
+        <view class="container_photo">
+            <view class="photo_content" wx:for="{{leImage}}"wx:key="{{index}}">
+                <image style="width:100%;height:100%" src="{{baseUrl}}/{{item.imgSrc}}"></image>
+            </view>
+             <view class="photo_content" bindtap="choosePhoto" wx:if="{{leImage.length<=8}}">
+                <view class="photo_icon">
+                     <ui-icon type="add" color='#999' size='28'/> 
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<button class="container_button"  form-type="submit" >提交</button>
+</form>

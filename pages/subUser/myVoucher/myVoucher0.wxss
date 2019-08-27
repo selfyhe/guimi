@@ -1,0 +1,22 @@
+@import '/pages/subUser/myVoucher/myVoucher.wxss';
+.card-tag{
+
+}
+.button-orig{
+  position: absolute;
+  top: 0;
+  right: 0; 
+  box-sizing: border-box;
+  display: inline-block;
+  width: 368rpx;
+  height: 130rpx;
+  padding-left: 140rpx;
+  padding-top: 38rpx;
+  color: #499521;
+  font-size: 32rpx;
+  font-weight: bold;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAU4AAACCAgMAAABUYMmBAAAADFBMVEWh0IZHcEyi0Yei0YcGOr0SAAAABHRSTlNnACFGBkJYZgAAAkJJREFUaN612j9u2zAUx3GmmgK0TpbuXbJ7yZBOOYKGPIpoOWhuO+gIOkIWHaFDgQLJEXKEXCJDtswZmpAuitqxJJPi+3KV8QHf+/GPBNhcGs3xR8KoTauKmosN6nVRM0TUKaPHEW2U0Sqiooyas4j26vUHtFNG30W01q5/CKh2/OZjQLXjN+cBtdrocUDV4z+KqHr8EW2164+o9pFirgOqHv99QNXjPw2oevyfIqod/9psjn8AVd/9EW0IVO4ItCfQlkA9gTYEaglUPakN2hGoJ9ArAhUE7Qm0I1BPoA2BCoL2BNoSqCPQhkB176l/aEegnkCvCFQQ9JJAawJ1BCoI2hNoS6COQC2BKq7ULbQmUEeggqAdgXoCbQhU7aISoqk7qCNQS6BaO3UX9QTaEKjSonqDtgTqCFSn/rdoR6COQAVBOwJ1BGrvAFSjfiHq30cV1v8I2hLoVwItr38M9QRqCVRuCdQRaGlU42hLoA2BFkY1gToCLfuonEI9gRZdAFNo0aqaRC2BlkxViKlOowXXqhBTnUGXd1WIqc6h8mMRuZ5HF22r6noeXXQCnNcH0AWH1ebfHfMj/23l4TCavaw+SAKamVU1pKCZDTiTJDTrDlxJIprRgFh8GprRgAdJRpN364VkoIltXUkWam8zzFQ0Jay/IeWgh9X/ZjoqX+bV6qcsQMU+zZgngyxC59JabZtZqMjvCfPz7s/yUPk+1tjqUYpQsTd75vMghWhkt2d7sk8uQcP4dvOyDuD7l+dfo8/rVz1KUcrMCxd+AAAAAElFTkSuQmCC) no-repeat;
+  background-size: contain;
+  background-position: top right;
+
+}

@@ -1,0 +1,30 @@
+/* pages/subUser/myTaste/myTaste.wxss */
+.textarea{
+  border: 1px solid #eee;
+  border-radius: 16rpx;
+  padding: 20rpx 40rpx;
+  background: #fff;
+  margin: 40rpx auto;
+  font-size: 28rpx;
+}
+/*  */
+.affix-bar{
+  box-sizing: border-box;
+  width: 100%;
+  padding: 30rpx 40rpx; 
+  position: fixed;
+  left: 0;
+  bottom: 0;   
+} 
+.affix-bar-button{ 
+  font-size: 32rpx;
+  color: #fff;
+  background: #A2D085;
+  padding: 22rpx 0;
+  text-align: center;
+  line-height: 1.4;
+  border-radius: 0 0 20rpx 20rpx;
+}  
+/* .affix-bar-button:active{
+  opacity: .8;
+} */

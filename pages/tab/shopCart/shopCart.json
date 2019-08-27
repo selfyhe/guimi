@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "购物车",
+  "usingComponents": {
+    "ui-tab-bar": "/common/components/tab-bar/tab-bar",
+    "ui-input-number": "/common/components/input-number/input-number",
+    "ui-dialog": "/common/components/dialog/dialog",
+    "form-ids": "/common/components/form-ids/form-ids"
+  }
+}

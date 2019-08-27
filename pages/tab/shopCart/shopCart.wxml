@@ -1,0 +1,90 @@
+<!--pages/tab/shopCart/shopCart.wxml-->
+<view class='container'>
+  <block wx:if="{{list.length}}">
+    <view class='list-header ui-hairline--bottom'>
+      <view class='view'>
+        <ui-icon class='mr10' type="shop_fill" color='#999999' size='18' />{{store.STORE_NAME || '无门店'}}</view>
+      <view class='list-header-bd'>
+        <block wx:if="{{deliveryMoneydiff}}">
+          <navigator open-type='switchTab' url='/pages/tab/menu/menu' class='font-24 ui-c-gray-dark'>满{{deliveryFee.DELIVERY_PRICE}}免运费,还差￥{{deliveryMoneydiff}}元,去凑单</navigator>
+          <ui-icon class='mr-10' type="enter" color='#999999' size='18' />
+        </block>
+        <block wx:else>
+          <text class='font-24 ui-c-gray-dark'>免运费</text>
+        </block>
+      </view>
+    </view>
+    <view class='list pd110'>
+      <view class='list-item' wx:for="{{list}}" wx:key="{{item.GUIMI_PRODUCT_ID}}">
+        <view class='list-item-del' catchtap='handleGoodDel' data-index='{{index}}'>删除</view>
+        <view class='list-item-content ui-hairline--bottom' data-index='{{index}}' bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" style="{{item.txtStyle}}">
+          <block wx:if="{{item.TYPE == 0}}">
+            <view class='list-item-radio' catchtap='handleCheckedClick' data-index='{{index}}'>
+              <icon class='cell-radio-icon' type="{{item.checked ? 'success' : 'circle'}}" size="24" color="{{item.checked?'#4EC487':'#979797'}}" />
+            </view>
+          </block>
+          <block wx:else>
+            <view class='list-item-radio'>
+              <icon class='cell-radio-icon' type="success" size="24" color="#eee" />
+            </view>
+          </block>
+
+          <view class='list-item-media'>
+            <image src='{{baseUrl}}/{{item.IMG_URL}}' />
+          </view>
+          <view class='list-item-inner'>
+            <view class='list-item-top'>
+              <view class='list-item-title'>
+                {{item.PRODUCT_NAME}}
+              </view>
+              <view class='list-item-txt'>
+                {{item.SPEC_NAME}}
+              </view>
+            </view>
+            <view class='list-item-bottom'>
+              <view class='list-item-price'>￥
+                <text class='font-32'>{{item.PRICE}}</text>
+              </view>
+              <view class='list-item-counter' wx:if="{{item.TYPE == 0}}">
+                <ui-input-number value="{{ item.NUM }}" min="0" max="100" bindchange="handleNumberChange" data-index="{{index}}" />
+              </view>
+              <view class='list-item-counter' wx:else>
+                <text class='ui-c-gray-dark font-28'>兑换商品</text>
+              </view>
+
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <!-- <view style="margin:300rpx auto;"><ui-load-more tip="购物车空空如也" loading="{{ false }}"/></view> -->
+    <image src="/images/no-cart.png" style="margin:300rpx auto 0;width:580rpx;height:300rpx;" class='' />
+    <view style='color:#999;margin-top:20rpx;text-align:center;font-size:28rpx;'>购物车内什么也没有!</view>
+  </block>
+</view>
+<!-- 结算栏 -->
+<view class='affix-bar' wx:if="{{list.length}}">
+  <view class='affix-bar-hd'>
+    <view class='affix-bar-hd-left'>
+      <view class=''>商品合计
+        <text class='ml10' style='font-size:40rpx;'>￥{{totalPrice}}</text>
+      </view>
+      <view class='' style='font-size:20rpx;' wx:if="{{deliveryMoneydiff}}">还差{{deliveryMoneydiff}}元免运费</view>
+      <view class='' style='font-size:20rpx;' wx:else>免运费</view>
+    </view>
+  </view>
+  <block wx:if="{{userInfo.MOBILE}}">
+    <form-ids>
+      <view class='affix-bar-button' bindtap='handlePayClick'>去结算</view>
+    </form-ids>
+  </block>
+  <block wx:else>
+    <button class='authorizePhone affix-bar-button' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">去结算</button>
+  </block>
+</view>
+<!--  -->
+<ui-dialog title="" visible="{{ visible }}" bind:ok="handleDialogGoodDel" bind:cancel="handleDialogClose">
+  <view> 确定不要了吗</view>
+</ui-dialog>

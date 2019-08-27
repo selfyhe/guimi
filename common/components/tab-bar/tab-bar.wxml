@@ -1,0 +1,9 @@
+<view class="tab-bar tab-bar-fixed"> 
+    <view class="tab-bar-item {{current == item.path ? 'active':''}}" wx:for="{{tabs}}" wx:key="{{index}}" data-path='{{item.path}}' bindtap="handleNavigator">
+      <!-- <view class='badge' wx:if="{{index === 3}}"></view> -->
+      <view class='tab-bar-item-img' wx:if="{{item.img}}">
+        <image src="/images/nav/{{current == item.img ? item.img+'_on':item.img}}.png"></image>
+      </view>
+      <view class='tab-bar-item-title'>{{item.title}}</view>
+    </view> 
+</view>

@@ -1,0 +1,51 @@
+<!--pages/subUser/myWallet/myWallet.wxml-->
+<view class='container'>
+  <view class='main'>
+    <view class='header'>
+      <view class='header-bg'><image src="/images/user_bg.png"/></view>
+      <view class='header-inner'><view class='header-hd'>
+        <view class='header-title'>账户余额</view>
+        <view class='header-money'>
+          <text class='yue mr10'>{{money}}</text>元</view>
+      </view>
+      <view class='header-bd'>
+        <view class='header-btn' bindtap='handleNavigator' data-url='/pages/subUser/myTrades/myTrades'>交易记录
+          <ui-icon class='' type="play_fill" size="20" color='#5CAE32' />
+        </view>
+      </view></view>
+    </view>
+    <view class='ul'>
+      <view class='ul-header ui-hairline--bottom' bindtap='handleRulesClick'>充值活动
+        <ui-icon type="feedback" size="24" color='#0E0E0E' />
+      </view>
+      <!-- 充值列表 -->
+      <view class='li' wx:for="{{activeList}}" wx:key="{{index}}">
+        <view class='li-hd'>
+          <view class='li-h2'>{{item.REACH_AMOUNT}}</view>
+          <view class='li-title'>赠送价值{{item.COUPON_WORTH}}元优惠劵</view>
+        </view>
+        <view class='li-bd' >
+          <view class='li-button'  bindtap='handleCardTopup' data-index="{{index}}"> 充值</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!--  -->
+<!-- <ui-dialog title="" visible="{{visible}}" showCancel="{{false}}" okText="我知道了" bind:ok="handleClose">
+  <view class='dialog-info'>活动说明</view> 
+</ui-dialog> -->
+
+<ui-popup id="popup" visible="{{popupShow}}">
+    <view class='redBao-box' style="background:white;z-index:999;border-radius:30rpx;padding:40rpx">
+        <view class="ruleTitle">活动规则</view>
+        <view class="rulebox" wx:for="{{ruleIndex}}" wx:key="{{index}}">
+            <view class="rueleIndex">{{item.index}}</view>
+            <view class="rueleContent">{{item.item}}</view>
+        </view>
+         
+    </view>
+    <view bindtap='handleRedbaoClose' class="hiddens">
+        <ui-icon type="close" size='20' color='#999'/>
+    </view>
+</ui-popup>

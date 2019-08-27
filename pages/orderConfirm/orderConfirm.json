@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "确定订单",
+  "usingComponents": {
+    "form-ids": "/common/components/form-ids/form-ids"
+  }
+}

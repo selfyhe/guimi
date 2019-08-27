@@ -1,0 +1,258 @@
+<!--pages/orderConfirm/orderConfirm.wxml-->
+<view class='container' style='padding-bottom:150rpx;'>
+  <form-ids>
+    <view class='address-box'>
+      <view class='address-hd ui-hairline--bottom' bindtap='handleAddressChoose'>
+        <block wx:if="{{address.GUIMI_ADDRESS_ID}}">
+          <view class='address-hd-content'>
+            <view class='address-hd-title'>{{address.ADDRESS}}{{address.HOUSE_NUM}}</view>
+            <view class='address-hd-txt'>
+              <text class='mr30'>{{address.CONTACT}}</text>{{address.CONTACT_PHONE}}</view>
+          </view>
+        </block>
+        <block wx:else>
+          <view class='address-hd-content'>
+            <view class='address-tip'>请选择收货地址</view>
+          </view>
+        </block>
+        <view class='address-hd-arrow'>
+          <ui-icon type="enter" size="20" color="#999" />
+        </view>
+      </view>
+      <block wx:if="{{address.GUIMI_ADDRESS_ID && serviceTimeArray.length}}">
+        <view class='address-bd'>
+          <view class='address-bd-left'>送达时间</view>
+
+          <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" range-key="title" value="{{serviceTimeCurrent}}" range="{{serviceTimeArray}}">
+            <!-- <view class="">{{serviceTimeArray[serviceTimeCurrent]}}</view> -->
+            <!-- <view class='address-bd-right'>尽快送达({{serviceTimeArray[serviceTimeCurrent]}}送达)</view> -->
+            <view class='address-bd-right' wx:if="{{deliveryTime.time}}">{{parse.removeToday(serviceTimeArray[1][serviceTimeCurrent[1]].title,serviceTimeArray[0][serviceTimeCurrent[0]].title)}} {{serviceTimeArray[1][serviceTimeCurrent[1]].title}}
+              <ui-icon type="enter" size="20" color="#999" />
+            </view>
+            <view class='address-bd-right' wx:else>{{deliveryTime.title}}
+              <ui-icon type="enter" size="20" color="#999" />
+            </view>
+          </picker>
+        </view>
+      </block>
+      <block wx:else>
+        <view class='address-bd'>
+          <text class='ui-c-gray-dark ui-font-bold'>立即配送</text>
+        </view>
+      </block>
+    </view>
+  </form-ids>
+  <view class='goods-list mb30'>
+    <view class='goods-header'>
+      <view class='ui-font-bold'>商品信息</view>
+      <view class='goods-header-bd'>
+        <!-- <block wx:if="{{deliveryMoneydiff}}">
+         <navigator url='/pages/makeGoods/makeGoods' class='font-24 ui-c-gray-dark'>实付满{{deliveryFee.DELIVERY_PRICE}}免运费,还差￥{{deliveryMoneydiff}}元,去凑单</navigator>
+        <ui-icon class='mr-5' type="enter" color='#999999' size='18' />
+      </block>
+      <block wx:else>
+        <text class='font-24 ui-c-gray-dark'>免运费</text>
+      </block> -->
+      </view>
+    </view>
+    <view class='goods-inner'>
+      <view class='goods-inner-item' wx:for="{{list}}" wx:key="{{item.GUIMI_PRODUCT_ID}}">
+        <view class='goods-inner-item-media'>
+          <image src='{{baseUrl}}/{{item.IMG_URL}}' />
+        </view>
+        <view class='goods-inner-item-inner'>
+          <view class='goods-inner-item-title'>
+            <view class='ui-font-bold'> {{item.PRODUCT_NAME}}
+              <text wx:if="{{item.TYPE == '1'}}" class='ml10 ui-c-gray-dark font-24'>(商品券)</text>
+            </view>
+            <view class='ui-font-bold'>￥{{item.PRICE}} </view>
+          </view>
+          <view class='goods-inner-item-title font-24'>
+            <text class='ui-c-gray-darker'>{{item.SPEC_NAME}} </text>
+            <text class=''>X{{item.NUM}} </text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- <view class='cell'>
+      <view class='cell-hd'>
+        <text class='font-32'>商品劵</text>
+      </view>
+      <view class='cell-bd' bindtap="gourpOrder">
+        <text class='ui-c-gray-dark'>暂无可用</text>
+        <ui-icon class='mr-5' type="enter" color='#999999' size='20' />
+      </view>
+    </view> 
+    <view class='cell'>
+      <view class='cell-hd'>
+        <text class='font-32'>优惠券</text>
+      </view>
+      <view class='cell-bd' bindtap="gourpList">
+        <block wx:if="{{jian !=0}}">
+          <text class="color-orange">-￥{{jian}}</text>
+        </block>
+        <block wx:else>
+          <text class='ui-c-gray-dark'>{{group}}</text>
+          <ui-icon class='mr-5' type="enter" color='#999999' size='20' />
+        </block>
+      </view>
+    </view>
+    <view class='cell ui-hairline--top'>
+      <view class='cell-hd'>商品实付</view>
+      <view class='cell-bd'>￥{{goodsMoney}}</view>
+    </view>
+    <view class='cell'>
+      <view class='cell-hd'>餐盒费</view>
+      <view class='cell-bd'>￥0</view>
+    </view> 
+    <view class='cell'>
+      <view class='cell-hd'>包装费</view>
+      <view class='cell-bd'>￥{{packageMoney}}</view>
+    </view>
+    <view class='cell'>
+      <view class='cell-hd'>配送费</view>
+      <view class='cell-bd'>￥{{deliveryMoney}}</view>
+    </view> 
+    <view class='total ui-hairline--top'>
+      小计￥
+      <text wx:if="{{jian != 0}}" class='font-44 ui-font-bold'>{{totalPrice}}</text>
+      <text wx:else class='font-44 ui-font-bold'>{{totalPrice}}</text>
+      <!-- <text wx:else class='font-44 ui-font-bold'>{{totalPriceend}}</text>
+    </view>-->
+  </view>
+  <view class='panel mb30'>
+    <view class='panel-hd ui-hairline--bottom'>优惠信息</view>
+    <view class='panel-inner'>
+      <view class='panel-inner-left'>
+        <view class='panel-title'>优惠券</view>
+      </view>
+      <view wx:if="{{userCoupons.length}}" class='panel-inner-right' catchtap="handleCoupsExchange">
+        <block wx:if="{{userCoupon.GUIMI_USER_COUPON_ID}}">
+          <text class="color-orange">-￥{{userCoupon.WORTH}}</text>
+          <ui-icon class='mr-5' type="enter" color='#999999' size='20' />
+        </block>
+        <block wx:else>
+          <text class='color-orange'>{{userCoupons.length}}个可用</text>
+          <ui-icon class='mr-5' type="enter" color='#999999' size='20' />
+        </block>
+      </view>
+      <view wx:else class='panel-inner-right'>
+        <text class='ui-c-gray-dark'>无可用</text>
+      </view>
+    </view>
+    <view class='panel-inner'>
+      <view class='panel-inner-left'>
+        <view class='panel-title'>商品券</view>
+      </view>
+      <view wx:if="{{productCoupons.length}}" class='panel-inner-right' catchtap='handleGoodsCoupsExchange'>
+        <block wx:if="{{productCoupon.GUIMI_USER_COUPON_ID}}">
+          <text class="color-orange">已使用</text>
+          <ui-icon class='mr-5' type="enter" color='#999999' size='20' />
+        </block>
+        <block wx:else>
+          <text class='color-orange'>{{productCoupons.length}}个可用</text>
+          <ui-icon class='mr-5' type="enter" color='#999999' size='20' />
+        </block>
+      </view>
+      <view wx:else class='panel-inner-right'>
+        <text class='ui-c-gray-dark'>无可用</text>
+      </view>
+    </view>
+  </view>
+  <view class='panel mb30'>
+    <view class='panel-hd ui-hairline--bottom'>支付工具</view>
+    <view class='panel-inner' style='padding: 56rpx 0 44rpx;'>
+      <view class='panel-inner-left'>
+        <view class='panel-inner-title'>余额</view>
+        <view class='panel-inner-txt'>账户余额：￥{{money}}</view>
+      </view>
+      <view class='panel-inner-right'>
+        <view class='switch'>
+          <switch bindchange="handlePayTypeChange" checked="{{checked}}" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='remarks-box mb30' bindtap='handleRemakeAdd'>
+    <view class='remarks-hd'>备注</view>
+    <view class='remarks-bd ui-ellipsis'>
+      <block wx:if="{{REMARKS}}">{{REMARKS}}</block>
+      <block wx:else>
+        <text class='ui-c-gray-dark'>口味、偏好等要求</text>
+        <ui-icon type="enter" size="20" color="#999" />
+      </block>
+    </view>
+  </view>
+  <view class='order-detail'>
+
+    <view class='order-detail-hd'>
+      订单详情
+    </view>
+    <view class='dotted'></view>
+    <view class='order-detail-bd'>
+      <view class='order-detail-inner ui-hairline--bottom'>
+        <view class='order-detail-inner-hd'>商品金额</view>
+        <view class='order-detail-inner-bd'>￥{{goodsMoney}}</view>
+      </view>
+      <view class='order-detail-inner ui-hairline--bottom'>
+        <view class='order-detail-inner-hd'>包装费</view>
+        <view class='order-detail-inner-bd'>￥{{packageMoney}}</view>
+      </view>
+      <view class='order-detail-inner ui-hairline--bottom'>
+        <view class='order-detail-inner-hd'>配送费</view>
+        <view class='order-detail-inner-bd'>￥{{deliveryMoney}}</view>
+      </view>
+      <view class='order-detail-inner'>
+        <view class='order-detail-inner-hd'>优惠金额</view>
+        <view class='order-detail-inner-bd'>
+          <block wx:if="{{userCoupon.GUIMI_USER_COUPON_ID}}">
+            <text class="color-orange">-￥{{userCoupon.WORTH}}</text>
+          </block>
+          <block wx:else>￥0</block>
+        </view>
+      </view>
+      <!-- <view class='order-detail-inner border-bottom'>
+        <view class='order-detail-inner-hd'>合计</view>
+        <view class='order-detail-inner-bd'>￥{{deliveryMoney}}</view>
+      </view> -->
+      <view class='order-detail-inner'>
+        <view class='order-detail-inner-hd'>余额支付</view>
+        <view class='order-detail-inner-bd'>￥{{balanceMoney}}</view>
+      </view>
+    </view>
+    <view class='dotted'></view>
+    <view class='order-detail-ft'>
+      <view class='ui-font-bold'>需支付：
+        <text class='color-orange'>￥{{totalPrice}}</text>
+      </view>
+    </view>
+    <view class='sawtooth'></view>
+  </view>
+
+</view>
+<!-- 底部栏 -->
+<view class='affix-bar'>
+  <view class='affix-bar-hd'>
+    <view class='affix-bar-hd-left'>
+      <view class=''>需支付
+        <text class='ml10' style='font-size:40rpx;'>￥{{totalPrice}}</text>
+      </view>
+      <view class='' style='font-size:20rpx;' wx:if="{{deliveryMoneydiff}}">还差{{deliveryMoneydiff}}元免运费</view>
+      <view class='' style='font-size:20rpx;' wx:else>免运费</view>
+    </view>
+  </view>
+  <form-ids>
+    <view class='affix-bar-button' bindtap="handlePayClick">确认下单</view>
+  </form-ids>
+</view>
+<wxs module="parse">
+  module.exports = {
+    removeToday: function(title, value) {
+      if (title.indexOf('尽快') > -1) {
+        return ''
+      } else {
+        return value
+      }
+    }
+  }
+</wxs>

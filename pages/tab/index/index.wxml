@@ -1,0 +1,54 @@
+<view class="container">
+  <view class='slide-box'>
+    <swiper class='slide-container' indicator-dots="{{true}}" indicator-active-color="#ffffff" autoplay="{{true}}" interval="3000" duration="500">
+      <block wx:for="{{imgUrls}}" wx:key="{{item.GUIMI_BANNER_ID}}">
+        <swiper-item>
+          <image src="{{baseUrl}}/{{item.IMG_URL}}" class="slide-image" catchtap='handleNavigator' data-url='{{item.JUMP_TO_ID}}' />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class='cell-box'>
+    <form-ids>
+      <view class="cell {{index < cells.length-1 ? 'ui-hairline--bottom' : ''}}" bindtap="handleCellClick" wx:for="{{cells}}" wx:key="{{index}}" data-index='{{index}}'>
+        <!-- <button wx:if="{{!userInfo.MOBILE}}" class='authorizePhone' open-type="getPhoneNumber" catchtap='handlePhoneClick' bindgetphonenumber="getPhoneNumber" data-index='{{index}}'></button> -->
+        <view class='cell-hd'>
+          <view class='cell-title'>{{item.title}}</view>
+          <view class='cell-txt'>{{item.enTitle}}</view>
+        </view>
+        <view class='cell-bd'>
+          <image class='cell-img' src="/images/index_icon_{{index+1}}.png" />
+        </view>
+      </view>
+    </form-ids>
+  </view>
+  <view class='banner' wx:if="{{adList.length}}">
+    <image src='{{baseUrl}}/{{adList[0].IMG_URL}}' bindtap='handleNavigator' data-url='{{adList[0].JUMP_TO_ID}}' />
+  </view>
+</view>
+<!-- 弹出层 -->
+<view class="mask" bindtap='handleHide' wx:if="{{popupShow&&poster.IMG_URL}}"></view>
+<view class='popup-container' wx:if="{{popupShow&&poster.IMG_URL}}">
+  <view class='redBao-box'>
+    <view class='redBao-inner'>
+      <image class='redBao-img' src='{{baseUrl}}/{{poster.IMG_URL}}' bindtap='handlePosterClick' data-action='{{posterAction}}' />
+      <!-- <view bindtap='handlePosterClick' class='redBao-img' style='background:url({{baseUrl}}/{{poster.IMG_URL}});background-size:100% 100%;'></view> -->
+      <view class='redBao-close' bindtap='handlePopupClose'>
+        <ui-icon type="close" size='20' color='#fff' />
+      </view>
+    </view>
+  </view>
+</view>
+<ui-popup id="popup2" visible="{{visible}}">
+  <view class='my-popup'>
+    <view class='my-popup-inner'>
+      <view class='font-32 ui-c-gray-darker ui-font-bold'>恭喜您成功领取</view>
+      <view class='my-popup-h2'>{{worth}}元新人大礼包</view>
+      <view class='font-28 ui-c-gray-dark ui-font-bold'>已存入您的账户</view>
+    </view>
+    <!-- <button open-type='share' class='share-button my-popup-button'>分享给小伙伴一起领</button> -->
+    <view class='my-popup-button' bindtap='handleNavigator2' data-url='/pages/tab/menu/menu'>立即使用</view>
+  </view>
+  <view class='my-popup-close' bindtap='handleMypopupClose'></view>
+</ui-popup>
+<!-- 海报宽高 560*700 -->

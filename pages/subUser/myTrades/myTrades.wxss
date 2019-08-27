@@ -1,0 +1,25 @@
+/* pages/subUser/myTrades/myTrades.wxss */
+.li{
+  box-sizing: border-box;
+  padding: 50rpx 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+}
+.li-txt{
+  font-size: 28rpx;
+  color: #999;
+}
+.li-title{
+  font-size: 34rpx;
+  color: #333; 
+  margin-bottom: 10rpx;
+}
+.li-bd{
+  font-size: 44rpx;
+  color: #333;
+}
+.color-orange{
+  color: #FF875C
+}

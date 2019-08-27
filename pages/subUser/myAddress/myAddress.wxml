@@ -1,0 +1,41 @@
+<!--pages/subUser/MyAddress/myAddress.wxml-->
+<view class='container pd110'>
+  <view class='ul'>
+    <view class='li ui-hairline--bottom' wx:for="{{addressList}}" wx:key="{{item.GUIMI_ADDRESS_ID}}" bindtap="handleAddressChecked" data-index='{{index}}'>
+      <view class='li-hd'>
+        <view class='li-title'>{{item.ADDRESS}}
+          <text class="li_moren" wx:if="{{item.STATUS == 1}}">默认</text>
+        </view>
+        <view class='li-txt'>
+          <text class='mr30'>{{item.CONTACT}}</text>{{item.CONTACT_PHONE}} </view>
+      </view>
+      <!-- <block wx:if="{{!isChoose}}"> -->
+        <view class='li-bd' catchtap='handleAddressEdit' data-index="{{index}}">
+          <ui-icon type="brush" size="20" color="#666" />
+        </view>
+        <view class="detail-icon" catchtap="detailInvoice" data-addressid="{{item.GUIMI_ADDRESS_ID}}">
+          <ui-icon type="trash" size="20" color="#666" />
+        </view>
+      <!-- </block> -->
+    </view>
+    <!-- <block wx:if="{{cannotList.length}}">
+      <view class='li-header'>
+        <image src="/images/icon_location2.png" class='icon-location2 mr10' />以下地址不在{{store.STORE_NAME}}配送范围
+      </view> 
+      <view class='li ui-hairline--bottom li-darker' wx:for="{{cannotList}}" wx:key="{{item.GUIMI_ADDRESS_ID}}">
+        <view class='li-hd'>
+          <view class='li-title'>{{item.ADDRESS}}
+            <text class="li_moren" wx:if="{{item.STATUS == 1}}">默认</text>
+          </view>
+          <view class='li-txt'>
+            <text class='mr30'>{{item.CONTACT}}</text>{{item.CONTACT_PHONE}} </view>
+        </view>
+      </view>
+    </block> -->
+  </view>
+</view>
+<!-- 底部栏 -->
+<view class='affix-bar'>
+  <view class='affix-bar-button' bindtap='handleAddressAdd'>添加新的地址</view>
+</view>
+<!-- 您还没有地址信息 -->

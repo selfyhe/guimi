@@ -1,0 +1,40 @@
+<!--pages/location/location.wxml-->
+<view class='container bgf'>
+  <view class='search-box'>
+    <view class='search-inner' bindtap='handleLocationSearch'>搜索地址</view>
+  </view>
+  <view class='location-box' bindtap='handleLocationClick'>
+    <view class='icon-location'>
+      <image src='/images/icon_location.png' />
+    </view>
+    <view class='location-title'>点击定位当前地址</view>
+  </view>
+  <view class='my-list list'>
+    <view class='list-header'>我的地址</view>
+    <block wx:if="{{addressList.length}}">
+      <view class='list-item' wx:for="{{addressList}}" wx:key="{{item.GUIMI_ADDRESS_ID}}" bindtap='handleAddressClick'  data-index='{{index}}'>
+        <view class='list-item-title'>{{item.ADDRESS}}</view>
+        <view class='list-item-txt'>
+          <text class=''>{{item.CONTACT}}</text>
+          <text class='ml30'>{{item.CONTACT_PHONE}}</text>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class='ui-c-gray-dark'>暂未添加地址</view>
+    </block>
+  </view>
+  <view class='nearby-list list ui-hairline--top'>
+    <block wx:if="{{adjoinList.length}}">
+      <view class='list-header'>附近地址</view>
+      <view class='list-item' wx:for="{{adjoinList}}" wx:key="{{item.id}}" bindtap='handleLocationChoose' data-index='{{index}}'>
+        <view class='list-item-txt'>
+          {{item.title}}
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class='ui-c-gray-dark'>未查询到地址</view>
+    </block>
+  </view>
+</view>

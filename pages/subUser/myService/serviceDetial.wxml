@@ -1,0 +1,6 @@
+<view class="container">
+    <view class="container_content" wx:for="{{listDetails}}" wx:key="{{index}}">
+        <view class="container_title">Q{{index+1}}:{{item.TITLE}}</view>
+        <view class="container_text">{{item.ANSWER}}</view>
+    </view>
+</view>

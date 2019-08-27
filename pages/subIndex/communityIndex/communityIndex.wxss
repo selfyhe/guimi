@@ -1,0 +1,5 @@
+/* pages/communityIndex/communityIndex.wxss*/
+.container{
+  width:auto;
+  height:auto;
+}

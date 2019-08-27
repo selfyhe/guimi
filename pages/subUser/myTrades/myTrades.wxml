@@ -1,0 +1,19 @@
+<!--pages/subUser/myTrades/myTrades.wxml-->
+<view class='container'>
+  <view class='ul'>
+    <view class='li ui-hairline--bottom' wx:for="{{recordDetail}}" wx:key="{{index}}">
+      <view class='li-hd'>
+        <view class='li-title'>{{item.TYPE==1?'微信支付':(item.TYPE==0?'余额充值':(item.TYPE==2?'退款':(item.TYPE==3?'余额支付':'')))}}</view>
+        <view class='li-txt'>{{item.CREATE_DATE}}</view>
+      </view>
+      <view class='li-bd'>
+        <!-- <view class="ui-font-bold {{index%2 ? 'color-orange' : ''}}" style="display:flex"> -->
+        <view class="ui-font-bold {{item.TYPE == 0 || item.TYPE == 2 ? 'color-orange' : ''}}" style="display:flex">
+         <view wx:if="{{item.TYPE == 0 || item.TYPE == 2}}">+</view>
+         <view wx:if="{{item.TYPE == 3 || item.TYPE == 1}}">-</view>
+            {{item.TRADE_AMOUNT}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

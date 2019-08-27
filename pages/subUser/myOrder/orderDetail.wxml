@@ -1,0 +1,221 @@
+<!--pages/subUser/myOrder/orderDetail.wxml-->
+<view class='container bgf' style="padding-bottom:200rpx;">
+  <view class='header'>
+    <view class='header-hd ui-font-bold'>
+      <!-- 订单已完成 -->
+      订单{{status == 0?'待付款':(status == 1?'待发货':(status == 2?'确认收货':(status == 3?'待评价':(status == 5?'处理中....':(status == 6?'退款成功':(status == 7?'已完成':'下单成功'))))))}}
+    </view>
+    <button open-type="contact" bindcontact="handleContact">
+        <view class="service">
+            <image src="/images/service.png" style="width:100%;height:100%;"></image>
+        </view>
+    </button>
+    <view class='header-bd'>
+      <view class="header_box">
+          <view class='button button-warning' wx:if="{{status == 0}}"  bindtap="payMent">立即付款</view>
+          <view class='li-button_cancel ml20' wx:if="{{status == 0}}" bindtap="cancelOrder">取消订单</view>
+          <view class='button button-warning' wx:if="{{status == 3}}" bindtap="agin">再来一单</view>
+
+          <!-- <button class='affix-bar-button' open-type="contact" bindcontact="handleContact">
+              <view class='button button-outlined ml20' wx:if="{{status == 3}}">申请退款</view>
+          </button> -->
+          
+          <view class='button button-warning' wx:if="{{status == 2}}" bindtap="confirmReceipt">确认收货</view>
+          <view class='button button-warning ml20' wx:if="{{status == 3}}" bindtap='handleRateClick'>评价</view>
+          <view class='button button-warning' wx:if="{{status == 7}}">已完成</view>
+
+          <!-- <button class='affix-bar-button' open-type="contact" bindcontact="handleContact">
+              <view class='button button-warning' wx:if="{{status == 5}}">处理中....</view>
+          </button> -->
+
+          <view class='button button-warning' wx:if="{{status == 6}}">退款成功</view>
+           <view class='button button-warning' wx:if="{{status == 1}}">处理中....</view>
+          <!-- <view class='button button-shangjia' wx:if="{{status == 1}}">等待商家发货</view> -->
+          <view class='button button-warning' wx:if="{{status == 8}}">退款失败</view>
+      </view>
+    </view>
+  </view>
+  <view class='main'>
+    <view class='ul'>
+      <view class='ul-header border-bottom-dotted ui-font-bold'>商品列表({{orderList.length}})</view>
+      <view class='li' wx:for="{{orderList}}" wx:key="{{index}}">
+        <view class='li-inner'>
+          <view class='li-title ui-font-bold'>{{item.PRODUCT_NAME}}</view>
+          <view class='li-title ui-font-bold'>￥{{item.PAYMENT}}</view>
+          <!-- .PRICE -->
+        </view>
+        <view class='li-info'>
+          <!-- <view class='font-24 ui-c-gray-darker'>{{item.PAYMENT}}</view> -->
+          <view class='font-24 ui-c-gray-darker'>数量</view>
+          <view class='font-24'>x{{item.NUM}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='cell ui-hairline--bottom'>
+      <view class='cell-hd ui-c-gray-darker'>包装费</view>
+      <view class='cell-bd'>￥{{orderidDetail.PACKAGE_PRICE}}</view>
+    </view>
+    <view class='cell ui-hairline--bottom'>
+      <view class='cell-hd ui-c-gray-darker'>配送费</view>
+      <view class='cell-bd'>￥{{orderidDetail.DELIVERY_FEE}}</view>
+    </view>
+    <view class='cell border-bottom-dotted'>
+      <view class='cell-hd ui-c-gray-darker'>优惠金额</view>
+      <view class='cell-bd color-orange'>-￥{{orderidDetail.DISCOUNT}}</view>
+    </view>
+    <!-- <view class='cell ui-hairline--bottom'>
+      <view class='cell-hd'>礼品卡支付</view>
+      <view class='cell-bd color-orange'>-￥10</view>
+    </view> -->
+    <view class='cell border-bottom-dotted'>
+      <view class='cell-hd'>支付方式</view>
+      <view class='cell-bd ui-c-gray-dark' wx:if="{{status == 0}}">暂未支付</view>
+      <view class='cell-bd ui-c-gray-dark' wx:else >{{orderidDetail.PAY_TYPE == '1'?'微信支付':'余额支付'}}</view>
+    </view>
+    <view class='pay-box ui-font-bold'>
+      实付：
+      <text class='color-F55A32'>￥<text class='font-40'>{{orderidDetail.PAYMENT}}</text></text>
+    </view>
+  </view>
+  <view class="service_beizhu">
+      <view class="beizhu_dian">备注</view>
+      <view class="beizhu_zi">{{orderidDetail.REMARKS?orderidDetail.REMARKS:'暂无备注'}}</view>
+  </view>
+  <view class="service_songda">
+     <view class="service_maxbox">
+        <view class="service_box">
+          <view class="service_xinxi">收货信息：</view>
+          <view class="service_add">
+              <view class="service_infor">{{orderidDetail.ADDRESS}}</view>
+              <view class="sevice_inf">{{orderidDetail.HOUSE_NUM}} {{orderidDetail.CONTACT_PHONE}}</view>
+          </view>
+        </view> 
+        <view class="service_box">
+          <view class="service_xinxi">送达时间：</view>
+          <view class="service_add">
+              <view class="service_infor">{{orderidDetail.SERVICE_TIME}}</view>
+          </view>
+        </view> 
+
+        <view class="service_hengxian"></view>
+
+         <view class="service_box">
+          <view class="service_xinxi">订单号：</view>
+          <view class="service_add">
+              <view class="service_infor">{{orderidDetail.FLOW_NUM}}</view>
+          </view>
+        </view>
+
+
+         <view class="service_box">
+          <view class="service_xinxi">下单时间：</view>
+          <view class="service_add">
+              <view class="service_infor">{{orderidDetail.CREATE_DATE}}</view>
+          </view>
+        </view>
+     </view>  
+  </view>
+
+
+
+
+  <view class="container_box"></view>
+<!-- 广告图点击跳转邀请有礼 -->
+  <view class="youli" bindtap="InviteCourtesy"  data-url='{{adList[0].JUMP_TO_ID}}' >
+    <image mode="widthFix" src="{{baseUrl}}/{{adList[0].IMG_URL}}" ></image>
+  </view>
+</view>
+<!-- 评价弹层 -->
+<form bindsubmit="formRateSubmit">
+  <view class='mask ' wx:if="{{visible}}" catchtouchmove='preventTouchMove' catchtap='handlePopupHide'></view>
+  <view class='popup rate-popup' wx:if="{{visible}}">
+    <view class='popup-container'>
+      <view class='popup-close' catchtap='handlePopupHide'>
+      <ui-icon type="close" size="24" color='#666' />
+    </view>
+    <view class='popup-title'>本次用餐体验如何？</view>
+    <view class='rate-box'>
+      <view class='rate-header mb20'>请选择您的评分</view>
+      <view class='rate-inner mb40'>
+        <view class="rate-star {{ parse.getCurrent( starIndex,index ) }}" wx:for="{{5}}" wx:key="{{index}}" catchtap='handleStarClick' data-index="{{index}}">
+          <ui-icon type="collection_fill" size="30" />
+        </view>
+         <!-- <view class='rate-text'></view> -->
+      </view>
+      <input type="text" name="name" value="{{starIndex}}" class="hide" />
+      <input class='supp-input mb30' name="supp" placeholder='反馈补充…' />
+    </view>
+    <button form-type="submit" class='btn-submit'>确定评价</button>
+    </view>
+  </view>
+</form>
+
+<!-- 右下角图片 -->
+<view class="xiadan" wx:if="{{xiadan}}" bindtap="xiadan">
+    <image  mode='widthFix' src="{{baseUrl}}/{{imgURLxiadan}}"></image>
+</view>
+
+<!-- 弹出层 -->
+<ui-popup id="popup" visible="{{popupShow}}" wx:if="{{cation == 1}}">
+    <view class='redBao-box' bindtap="showshare">
+      <!-- <button class="sharebutton" open-type="share" title="微信好友领取红包" hover-class="none"> -->
+          <!-- 微信好友 -->
+        <image mode='widthFix' src='{{baseUrl}}/{{imgURL}}'/>
+      <!-- </button>  -->
+    </view>
+      <view class='redBao-close' bindtap='handleRedbaoClose'>
+        <ui-icon type="close" size='20' color='#fff' />
+      </view>
+</ui-popup>
+
+<view class='mask ' wx:if="{{redshare}}" catchtouchmove='preventTouchMove' catchtap='handlePopupHide'></view>
+<view class="redshare"  wx:if="{{redshare}}">
+    <view class="redbox">
+        <view class="reamaxbaox">
+            <view class="redboxshare">
+                <button class="sharebutton" open-type="share" title="微信好友领取红包" hover-class="none">
+                      <!-- 微信好友 -->
+                  <image mode='widthFix' src='/images/icon_share.png'/>
+                </button>
+            </view>  
+            <view class="textshare">微信好友</view>
+        </view>
+        <view class="reamaxbaox" bindtap="handleButtonShare">
+           <view class="redboxshare">
+                <image mode='widthFix' src='/images/icon_shares.png'/>
+            </view>  
+            <view  class="textshare">保存图片</view>
+        </view>
+    </view>
+    <view class="textshareis" bindtap="redcanle">取消</view>
+</view>
+
+<!-- 保存图片 -->
+<ui-popup id="popup" visible="{{popupShowimg}}">
+  <view class='popup-box'>
+    <view class='popup-media'>                                                    
+        <!-- <image mode='widthFix' src='{{playbillPath}}' style='width:{{canvasWidth}}px;height:{{canvasHeight}}px;' /> -->
+        <image  src='{{playbillPath}}' style='width:{{canvasWidth * winScale}}px;height:{{canvasHeight* winScale}}px;' />
+    </view> 
+    <view class='btn-save' bindtap='handlePosterSave'>保存后可分享</view>
+  </view>
+</ui-popup>
+ 
+<view class="canvas-container">
+ <canvas class='canvas-content' canvas-id='playbill' style='width:{{canvasWidth}}px;height:{{canvasHeight}}px;'></canvas>
+</view>
+
+
+
+
+<wxs module="parse">
+
+var prefixCls = 'rate';
+module.exports = {
+    getCurrent : function( value,index ){
+        if( index < value  ){
+            return prefixCls + '-current'
+        }
+    }
+}
+</wxs>
